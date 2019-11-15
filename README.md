@@ -7,7 +7,7 @@
 
 Es una plataforma web y de escritotio que permite crear y participar en actividades que se realizen dentro de la ciudad de Bogotá cuando no tenemos nada que hacer en nuestras casas.
 
-## Features
+## Caracteristicas
 
 * [ASP.NET](https://dotnet.microsoft.com/apps/aspnet) - Plataforma web.
 * [Windows Forms](https://docs.microsoft.com/es-es/dotnet/framework/winforms/getting-started-with-windows-forms) - Aplicación de escritorio.
