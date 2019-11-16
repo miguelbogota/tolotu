@@ -19,7 +19,7 @@ namespace Tolotu_Web {
 
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services) {
-      services.AddRazorPages();
+      services.AddControllersWithViews();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -31,7 +31,6 @@ namespace Tolotu_Web {
         // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
         app.UseHsts();
       }
-
       app.UseHttpsRedirection();
       app.UseStaticFiles();
 
@@ -39,8 +38,10 @@ namespace Tolotu_Web {
 
       app.UseAuthorization();
 
+      // Rutas de las páginas
       app.UseEndpoints(endpoints => {
-        endpoints.MapRazorPages();
+        endpoints.MapControllerRoute(name: "Inicio", pattern: "{action}/{id?}", defaults: new { controller = "Inicio", action = "Index" });
+        endpoints.MapControllerRoute(name: "Cuenta", pattern: "{action}/{id?}", defaults: new { controller = "Cuenta", action = "Index" });
       });
     }
   }

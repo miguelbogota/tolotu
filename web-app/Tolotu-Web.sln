@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tolotu-Web", "Tolotu-Web\Tolotu-Web.csproj", "{40493E3E-68D7-4FF4-AAA9-6E02FF9177DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tolotu-Web", "Tolotu-Web\Tolotu-Web.csproj", "{3E4FFF1F-2808-4CE2-9225-DD55783BEDA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{40493E3E-68D7-4FF4-AAA9-6E02FF9177DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{40493E3E-68D7-4FF4-AAA9-6E02FF9177DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{40493E3E-68D7-4FF4-AAA9-6E02FF9177DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{40493E3E-68D7-4FF4-AAA9-6E02FF9177DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E4FFF1F-2808-4CE2-9225-DD55783BEDA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E4FFF1F-2808-4CE2-9225-DD55783BEDA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E4FFF1F-2808-4CE2-9225-DD55783BEDA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E4FFF1F-2808-4CE2-9225-DD55783BEDA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {213A5A24-C773-4E08-B517-17D55900471F}
+		SolutionGuid = {41D88806-73B4-4C65-95AB-206A3A2D06B4}
 	EndGlobalSection
 EndGlobal
