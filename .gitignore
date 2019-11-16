@@ -1,3 +1,5 @@
 
 desk-app/.vs
 web-app/.vs
+bin/
+obj/

@@ -22,4 +22,4 @@ Es una plataforma web y de escritotio que permite crear y participar en activida
 * **Miguel Bogota** - *Trabajo inicial* - [miguelbogota](https://github.com/miguelbogota)
 
 
-Ver también la lista de [contribuidores](https://github.com/your/tolotu/contributors) que participaron en este proyecto.
+Ver también la lista de [contribuidores](https://github.com/miguelbogota/tolotu/contributors) que participaron en este proyecto.
