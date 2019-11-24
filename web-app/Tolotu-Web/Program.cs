@@ -8,11 +8,18 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace Tolotu_Web {
+
+  // Estado: Activo
+  // Creado por Miguel Bogota - 15.11.2019
+  // Programa.
   public class Program {
+
+    // Main
     public static void Main(string[] args) {
       CreateHostBuilder(args).Build().Run();
     }
 
+    // Configurar y crear web
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
             .ConfigureWebHostDefaults(webBuilder => {
