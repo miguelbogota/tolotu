@@ -9,60 +9,55 @@ using System.Windows.Forms;
 
 namespace Tolotu_Desktop.modelo {
 
-    // Estado: Activo
-    // Creado por Juan Castro - 14.11.2019
-    // metodos de apertura y cierre de conexion a base de datos
-    public class Conexion {
 
-        public SqlConnection conecta = new SqlConnection("Server=(local); Database=tolotuDB; Integrated Security=true");
+  public class Conexion {
 
-        public ConnectionState State { get; internal set; }
+    private SqlConnection conecta = new SqlConnection("Server=(local); Database=x; Integrated Security=true");
 
+    // Constructor
+    public Conexion() {
 
-        // Estado: Activo
-        // Creado por Juan Castro - 14.11.2019
-        // metodo de apertura de conexion a base de datos
-        public SqlConnection abrirConx() {
-          try {
-            if (this.conecta.State == ConnectionState.Closed) {
-              conecta.Open();
-              return conecta;
-            }
-            else {
-              return null;
-            }
-          }
-          catch (SqlException e) {
-            MessageBox.Show("no se pudo abrir la conexión" + e);
-            return null;
-          }
-          catch (Exception x) {
-            MessageBox.Show("no se puede ejecutar la conexión con el servidor" + x);
-            return null;
-          }
-        }
-        // Estado: Activo
-        // Creado por Juan Castro - 14.11.2019
-        // metodos de cierre de conexion a base de datos
-        public SqlConnection cerrarConx() {
-          try {
-            if (this.conecta.State == ConnectionState.Open) {
-              conecta.Close();
-              return conecta;
-            }
-            else {
-              return null;
-            }
-          }
-          catch (SqlException e) {
-            MessageBox.Show("no se pudo cerrar la conexión" + e);
-            return null;
-          }
-          catch (Exception x) {
-            MessageBox.Show("no se puede ejecutar la conexión con el servidor" + x);
-            return null;
-          }
-        }
     }
+
+    public SqlConnection abrirConx() {
+      try {
+        if (this.conecta.State == ConnectionState.Closed) {
+          conecta.Open();
+          return conecta;
+        }
+        else {
+          return null;
+        }
+      }
+      catch (SqlException e) {
+        MessageBox.Show("no se pudo abrir la conexión" + e);
+        return null;
+      }
+      catch (Exception x) {
+        MessageBox.Show("no se puede ejecutar la conexión con el servidor" + x);
+        return null;
+      }
+    }
+
+    public SqlConnection cerrarConx() {
+      try {
+        if (this.conecta.State == ConnectionState.Open) {
+          conecta.Close();
+          return conecta;
+        }
+        else {
+          return null;
+        }
+      }
+      catch (SqlException e) {
+        MessageBox.Show("no se pudo cerrar la conexión" + e);
+        return null;
+      }
+      catch (Exception x) {
+        MessageBox.Show("no se puede ejecutar la conexión con el servidor" + x);
+        return null;
+      }
+    }
+  }
 }
 

@@ -47,10 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Control\ContLogin.cs" />
-    <Compile Include="Control\contRegistro.cs" />
     <Compile Include="Modelo\Conexion.cs" />
-    <Compile Include="Modelo\modLogin.cs" />
-    <Compile Include="Modelo\modRegistro.cs" />
     <Compile Include="Vista\Login.cs">
       <SubType>Form</SubType>
     </Compile>
