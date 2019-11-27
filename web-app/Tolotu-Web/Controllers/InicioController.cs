@@ -8,17 +8,21 @@ using Microsoft.Extensions.Logging;
 
 namespace Tolotu_Web.Controllers {
 
+  // Estado: Activo
+  // Creado por Miguel Bogota - 15.11.2019
+  // Controlador de toda las paginas de la carpeta Inicio
   public class InicioController : Controller {
-    private readonly ILogger<InicioController> _logger;
 
-    public InicioController(ILogger<InicioController> logger) {
-      _logger = logger;
-    }
-
+    // Estado: Activo
+    // Creado por Miguel Bogota - 16.11.2019
+    // Redirige a la pagina principal.
     public IActionResult Index() {
       return View();
     }
 
+    // Estado: Activo
+    // Creado por Miguel Bogota - 16.11.2019
+    // Redirige a la pagina de privacidad.
     public IActionResult Privacidad() {
       return View();
     }

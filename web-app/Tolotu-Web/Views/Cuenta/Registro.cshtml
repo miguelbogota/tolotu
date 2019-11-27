@@ -1,0 +1,69 @@
+﻿@model Tolotu_Web.Controllers.CuentaController
+@{
+  ViewData["Titulo"] = "Iniciar Sesión";
+}
+
+<!--
+// Estado: Activo
+// Creado por Miguel Bogota - 24.11.2019
+// Vista del registro donde se podra iniciar sesion con Facebook, crear cuenta o iniciar sesion si ya se tiene una cuenta.
+-->
+<div class="row">
+  <div class="col-lg-5 col-md-2"></div>
+  <div class="col-lg-5 col-md-8">
+
+    <!-- Logo -->
+    <div class="card">
+      <img src="~/img/Tolot_Logo.png" class="card-img-top h-50" alt="Logo">
+      <div class="card-body pb-1 pl-5 pr-5 pt-0 text-center">
+
+        <!-- Titulo -->
+        <div class="text-muted font-weight-bold mb-3">
+          <p>¡Regístrate para participar en actividades con tus amigos!</p>
+        </div>
+
+        <!-- Informacion de Facebook -->
+        <div style="position: relative;">
+
+          <button class="btn btn-primary w-100 mb-3">Iniciar sesión con Facebook</button>
+          <div class="line"></div>
+          <div class="inside-words-reg">o</div>
+
+        </div>
+
+        <!-- Form donde se van a pedir todos los datos del usuario y se van a guardar en el controlador en la propiedad usuario -->
+        <form method="post" asp-action="OnSubmitRegistro">
+          <input type="email" class="form-control mb-2 mt-3" placeholder="Correo electronico" asp-for="UsuarioRegistro.email">
+          <input type="text" class="form-control mb-2" placeholder="Nombre Completo" asp-for="UsuarioRegistro.nombre">
+          <input type="text" class="form-control mb-2" placeholder="Usuario" asp-for="UsuarioRegistro.usuario">
+          <input type="password" class="form-control mb-3" placeholder="Contraseña" asp-for="UsuarioRegistro.contrasena">
+
+          <button type="submit" class="btn btn-primary w-100">Registrarme!</button>
+        </form>
+
+        <!-- Terminos y condiciones -->
+        <div class="text-muted mt-4">
+          <p>Al registrarte, estas aceptando nuestros <b>Términos</b>, <b>Política de datos</b> y <b>Política de cookies</b>.</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="col-lg-2 col-md-2"></div>
+</div>
+
+<!-- Inicio de sesion en caso de que ya tenga cuenta -->
+<div class="row">
+  <div class="col-lg-5 col-md-2"></div>
+  <div class="col-lg-5 col-md-8">
+
+    <div class="card mt-3 text-center">
+      <div class="card-body">
+        ¿Ya tienes una cuenta? <a asp-area="" asp-controller="Cuenta" asp-action="Login">Inicia sesión</a>.
+      </div>
+    </div>
+
+  </div>
+  <div class="col-lg-2 col-md-2"></div>
+</div>

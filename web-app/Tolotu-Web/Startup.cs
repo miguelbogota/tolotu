@@ -10,6 +10,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace Tolotu_Web {
+
+  // Estado: Activo
+  // Creado por Miguel Bogota - 15.11.2019
+  // Inicio del programa.
   public class Startup {
     public Startup(IConfiguration configuration) {
       Configuration = configuration;
