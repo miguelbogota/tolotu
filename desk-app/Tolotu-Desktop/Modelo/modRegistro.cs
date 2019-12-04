@@ -30,8 +30,7 @@ namespace Tolotu_Desktop.Modelo
                 com.CommandType = CommandType.Text;
                 com.CommandText = "SELECT * FROM usuario WHERE [usuario] = '" + usuario + "';";
                 SqlDataReader reader = com.ExecuteReader();
-                if (reader.Read())
-                {
+                if (reader.Read()){
                     res = true;
                 }
             }
@@ -47,8 +46,23 @@ namespace Tolotu_Desktop.Modelo
         // Creado por Juan Miguel Castro rojas - 26.11.2019
         // insersion de valores a la base de datos para usuarios nuevos
         public Boolean registro(String usu, String pass, String Pnombre, String Snombre, String Papellido, String Sapellido, String correo, int genero, DateTime fecha, int edad, String tel, int Doc, int TDoc, PictureBox img){
+            Console.WriteLine(usu);
+            Console.WriteLine(pass);
+            Console.WriteLine(Pnombre);
+            Console.WriteLine(Snombre);
+            Console.WriteLine(Papellido);
+            Console.WriteLine(Sapellido);
+            Console.WriteLine(correo);
+            Console.WriteLine(genero);
+            Console.WriteLine(fecha);
+            Console.WriteLine(edad);
+            Console.WriteLine(tel);
+            Console.WriteLine(Doc);
+           
 
-            try{
+
+            try
+            {
                 con.abrirConx();
                 SqlCommand cmd = new SqlCommand();
                 cmd = new SqlCommand("insert into usuario([documento],[tipo_documento],[usuario],[primer_nombre],[segundo_nombre],[primer_apellido],[segundo_apellido],[correo],[tel],[genero],[fecha_nacimiento],[edad],[estado],[contrasenia],[rol],[imagen]) values (@[documento],@[tipo_documento],@[usuario],@[primer_nombre],@[segundo_nombre],@[primer_apellido],@[segundo_apellido],@[correo],@[tel],@[genero],@[fecha_nacimiento],@[edad],@[estado],@[contrasenia],@[rol],@[imagen])");
@@ -98,11 +112,7 @@ namespace Tolotu_Desktop.Modelo
             catch (Exception ex){
                 MessageBox.Show("ha habido un inconveniente con el registro, Por favor vuelva a insistir. " + ex);
             }
-
-
             return true;
-
-
         }
     }
     

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,21 +35,19 @@ namespace Tolotu_Desktop.Control
         // Estado: Activo
         // Creado por Juan Miguel Castro rojas - 23.11.2019
         //  metodo que valida que ningun campo falte por llenar y redirige a la base de datos
-        public void tomaDatos(String usu, String pass, String confPass, String nombres, String apellidos, String correo,String genero, DateTime fecha, String tel,String Doc,String TDoc, PictureBox img ){
-            if(usu == "" || pass =="" ||  confPass == "" || nombres == "" || apellidos == "" || correo == "" || genero == "" || tel == "" || Doc == "" || TDoc == ""){
+        public void tomaDatos(String usu, String pass, String confPass, String Pnombres, String Snombres, String Papellidos, String Sapellidos, String correo,String genero, DateTime fecha, String tel,String Doc,String TDoc, PictureBox img ){
+            if(usu == "" || pass =="" ||  confPass == "" || Pnombres == "" ||Papellidos == "" || correo == "" || genero == "" || tel == "" || Doc == "" || TDoc == ""){
                 MessageBox.Show("Ha dejado algun campo sin llenar. Por favor verifique que que no haya dejado un campo vacio");
             }
             else{
-                if (pass.Equals(confPass) && convertInt(Doc)){
+                if (pass.Equals(confPass) && convertInt(Doc)==true){
                     converGen(genero, TDoc);
-                    usu = "";
+                    
                     // se valida si la conversion de numero de documento y la edad son validos
                     if (convertInt(Doc) ==true && IdentificarEdad(fecha)==true){
-                        // se hace separacion de nombres y apellidos
-                        string[] n1n2 = nombres.Split(' ');
-                        string[] p1p2 = apellidos.Split(' ');
                         
-                        modReg.registro(usu, pass,n1n2[0],n1n2[1],p1p2[0],p1p2[1], correo, gen, fecha,edad,tel,document,TDocu,img);                    }
+                        modReg.registro(usu, pass, Pnombres, Snombres, Papellidos, Sapellidos, correo, gen, fecha,edad,tel,document,TDocu,img);
+                    }
                 }
                 else {
                     MessageBox.Show("No son iguales las contraseñas insertadas en los campos, por favor vuelva a intentarlo");
@@ -61,7 +60,8 @@ namespace Tolotu_Desktop.Control
         public Boolean IdentificarEdad(DateTime fecha){
             
              this.edad = System.DateTime.Now.Year - fecha.Year;
-            if (System.DateTime.Now.Subtract(fecha.AddYears(edad)).TotalDays < 0){
+           
+            if (System.DateTime.Now.Subtract(fecha.AddYears(edad)).TotalDays > 0){
                 
                 return true;    
             }

@@ -30,8 +30,8 @@
             this.txtusuario = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtNombres = new System.Windows.Forms.TextBox();
-            this.txtApellidos = new System.Windows.Forms.TextBox();
+            this.txtPNombres = new System.Windows.Forms.TextBox();
+            this.txtPApellidos = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtCorreos = new System.Windows.Forms.TextBox();
@@ -58,6 +58,10 @@
             this.label10 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtSNombres = new System.Windows.Forms.TextBox();
+            this.txtSApellidos = new System.Windows.Forms.TextBox();
             this.panelInfoBasica.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imagen)).BeginInit();
             this.panel2.SuspendLayout();
@@ -110,34 +114,34 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(133, 159);
+            this.label3.Location = new System.Drawing.Point(247, 34);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.Size = new System.Drawing.Size(74, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Nombres";
+            this.label3.Text = "Primer nombre";
             // 
-            // txtNombres
+            // txtPNombres
             // 
-            this.txtNombres.Location = new System.Drawing.Point(197, 156);
-            this.txtNombres.Name = "txtNombres";
-            this.txtNombres.Size = new System.Drawing.Size(165, 20);
-            this.txtNombres.TabIndex = 5;
+            this.txtPNombres.Location = new System.Drawing.Point(326, 31);
+            this.txtPNombres.Name = "txtPNombres";
+            this.txtPNombres.Size = new System.Drawing.Size(110, 20);
+            this.txtPNombres.TabIndex = 5;
             // 
-            // txtApellidos
+            // txtPApellidos
             // 
-            this.txtApellidos.Location = new System.Drawing.Point(456, 156);
-            this.txtApellidos.Name = "txtApellidos";
-            this.txtApellidos.Size = new System.Drawing.Size(165, 20);
-            this.txtApellidos.TabIndex = 7;
+            this.txtPApellidos.Location = new System.Drawing.Point(326, 110);
+            this.txtPApellidos.Name = "txtPApellidos";
+            this.txtPApellidos.Size = new System.Drawing.Size(110, 20);
+            this.txtPApellidos.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(401, 163);
+            this.label4.Location = new System.Drawing.Point(241, 117);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.Size = new System.Drawing.Size(76, 13);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Apellidos";
+            this.label4.Text = "Primer Apellido";
             // 
             // label5
             // 
@@ -158,6 +162,10 @@
             // panelInfoBasica
             // 
             this.panelInfoBasica.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelInfoBasica.Controls.Add(this.txtSApellidos);
+            this.panelInfoBasica.Controls.Add(this.txtSNombres);
+            this.panelInfoBasica.Controls.Add(this.label8);
+            this.panelInfoBasica.Controls.Add(this.label7);
             this.panelInfoBasica.Controls.Add(this.dateTimePicker1);
             this.panelInfoBasica.Controls.Add(this.label6);
             this.panelInfoBasica.Controls.Add(this.combGen);
@@ -165,10 +173,10 @@
             this.panelInfoBasica.Controls.Add(this.importImg);
             this.panelInfoBasica.Controls.Add(this.imagen);
             this.panelInfoBasica.Controls.Add(this.btnSiguiente);
-            this.panelInfoBasica.Controls.Add(this.txtNombres);
+            this.panelInfoBasica.Controls.Add(this.txtPNombres);
             this.panelInfoBasica.Controls.Add(this.label3);
             this.panelInfoBasica.Controls.Add(this.label4);
-            this.panelInfoBasica.Controls.Add(this.txtApellidos);
+            this.panelInfoBasica.Controls.Add(this.txtPApellidos);
             this.panelInfoBasica.Controls.Add(this.label5);
             this.panelInfoBasica.Controls.Add(this.txtCorreos);
             this.panelInfoBasica.Location = new System.Drawing.Point(12, 187);
@@ -216,7 +224,7 @@
             // 
             // importImg
             // 
-            this.importImg.Location = new System.Drawing.Point(392, 96);
+            this.importImg.Location = new System.Drawing.Point(174, 96);
             this.importImg.Name = "importImg";
             this.importImg.Size = new System.Drawing.Size(38, 23);
             this.importImg.TabIndex = 19;
@@ -227,7 +235,7 @@
             // imagen
             // 
             this.imagen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.imagen.Location = new System.Drawing.Point(256, 16);
+            this.imagen.Location = new System.Drawing.Point(38, 16);
             this.imagen.Name = "imagen";
             this.imagen.Size = new System.Drawing.Size(111, 114);
             this.imagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -413,6 +421,38 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(482, 34);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(74, 13);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "Primer nombre";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(467, 113);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(89, 13);
+            this.label8.TabIndex = 26;
+            this.label8.Text = "Segundo apellido";
+            // 
+            // txtSNombres
+            // 
+            this.txtSNombres.Location = new System.Drawing.Point(562, 31);
+            this.txtSNombres.Name = "txtSNombres";
+            this.txtSNombres.Size = new System.Drawing.Size(115, 20);
+            this.txtSNombres.TabIndex = 27;
+            // 
+            // txtSApellidos
+            // 
+            this.txtSApellidos.Location = new System.Drawing.Point(562, 110);
+            this.txtSApellidos.Name = "txtSApellidos";
+            this.txtSApellidos.Size = new System.Drawing.Size(115, 20);
+            this.txtSApellidos.TabIndex = 28;
+            // 
             // ventanaRegistro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -420,11 +460,11 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(739, 538);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelInfoBasica);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtusuario);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnValidar);
             this.Name = "ventanaRegistro";
             this.Text = "Tolotu- Registro";
@@ -446,8 +486,8 @@
     private System.Windows.Forms.TextBox txtusuario;
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.Label label3;
-    private System.Windows.Forms.TextBox txtNombres;
-    private System.Windows.Forms.TextBox txtApellidos;
+    private System.Windows.Forms.TextBox txtPNombres;
+    private System.Windows.Forms.TextBox txtPApellidos;
     private System.Windows.Forms.Label label4;
     private System.Windows.Forms.Label label5;
     private System.Windows.Forms.TextBox txtCorreos;
@@ -474,5 +514,9 @@
         private System.Windows.Forms.Button btnAtras;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox txtSApellidos;
+        private System.Windows.Forms.TextBox txtSNombres;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
     }
 }

@@ -77,7 +77,7 @@ namespace Tolotu_Desktop.vista {
 
         private void button1_Click_1(object sender, EventArgs e){
             String date = dateTimePicker1.Value.ToString("dd/MM/yyyy");
-            contReg.tomaDatos(txtusuario.Text, txtPass.Text, txtConfPass.Text, txtNombres.Text, txtApellidos.Text, txtCorreos.Text, combGen.SelectedItem.ToString(), dateTimePicker1.Value, txtTel.Text, txtNDoc.Text, combTD.SelectedItem.ToString(), imagen);
+            contReg.tomaDatos(txtusuario.Text, txtPass.Text, txtConfPass.Text, txtPNombres.Text, txtSNombres.Text, txtPApellidos.Text, txtSApellidos.Text, txtCorreos.Text, combGen.SelectedItem.ToString(), dateTimePicker1.Value, txtTel.Text, txtNDoc.Text, combTD.SelectedItem.ToString(), imagen);
             
         }
 
