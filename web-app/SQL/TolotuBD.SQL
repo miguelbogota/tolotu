@@ -1,7 +1,7 @@
-create database tolotuDB
+create database tolotuBD
 
 
-use tolotuDB;
+use tolotuBD;
 
 CREATE TABLE [estados] (
   [estadoId] tinyint PRIMARY KEY IDENTITY(1, 1),
@@ -74,7 +74,7 @@ CREATE TABLE [usuario] (
 
   [rol] tinyint,
 
-  [imagen] image
+  [imagen] varchar(100)
   
  
 )
