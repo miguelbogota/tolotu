@@ -6,17 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tolotu_Desktop.vista;
+using System.Drawing.Imaging;
+
 namespace Tolotu_Desktop.Control
 {
     // Estado: Activo
     // Creado por Juan Miguel Castro rojas - 23.11.2019
     // control de registro
-    class contRegistro
-    {
-        // Estado: Activo
-        // Creado por Juan Miguel Castro rojas - 23.11.2019
-        // metodo para validacion de nuevo usuario
+    class contRegistro{
+        
         private int gen, document, TDocu,edad;
+        private String URL;
         
         Modelo.modRegistro modReg = new Modelo.modRegistro();
 
@@ -42,21 +42,31 @@ namespace Tolotu_Desktop.Control
             else{
                 if (pass.Equals(confPass) && convertInt(Doc)==true){
                     converGen(genero, TDoc);
-                    
                     // se valida si la conversion de numero de documento y la edad son validos
                     if (convertInt(Doc) ==true && IdentificarEdad(fecha)==true){
-                        
-                        modReg.registro(usu, pass, Pnombres, Snombres, Papellidos, Sapellidos, correo, gen, fecha,edad,tel,document,TDocu,img);
+                        imagen(img, usu);
+                        modReg.registro(usu, pass, Pnombres, Snombres, Papellidos, Sapellidos, correo, gen, fecha,edad,tel,document,TDocu,URL);
                     }
-                }
-                else {
+                } else {
                     MessageBox.Show("No son iguales las contraseñas insertadas en los campos, por favor vuelva a intentarlo");
                 }
             }     
         }
+
+        // Estado: Activo
+        // Creado por Juan Miguel Castro rojas - 4.12.2019
+        // guarda la imagen en los archivos locales de la aplicacion
+        public void imagen(PictureBox img,String usu){
+            //direccion exacta de donde se uubica la imagen
+            this.URL = @"C:\Users\user\source\repos\miguelbogota\tolotu\desk-app\Tolotu-Desktop\imagenes\Img-" + usu + ".Jpeg";
+            img.Image.Save(URL, ImageFormat.Jpeg);
+        }
+
+
         // Estado: Activo
         // Creado por Juan Miguel Castro rojas - 26.11.2019
         // metodo para identificar la edad a base de la fecha de nacimiento
+
         public Boolean IdentificarEdad(DateTime fecha){
             
              this.edad = System.DateTime.Now.Year - fecha.Year;
@@ -64,8 +74,7 @@ namespace Tolotu_Desktop.Control
             if (System.DateTime.Now.Subtract(fecha.AddYears(edad)).TotalDays > 0){
                 
                 return true;    
-            }
-            else{
+            } else{
                 MessageBox.Show("la fecha de nacimiento que ha introducido es invaldia");
                 return false;
             }
@@ -104,8 +113,7 @@ namespace Tolotu_Desktop.Control
         // Estado: Activo
         // Creado por Juan Miguel Castro rojas - 23.11.2019
         //metodo para validar y convertir el nuemro de documento a entero
-        public Boolean convertInt(String Docum)
-        {
+        public Boolean convertInt(String Docum){
             Boolean confirmar =  Int32.TryParse(Docum, out document);
             return confirmar;
         }

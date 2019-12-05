@@ -60,6 +60,9 @@ namespace Tolotu_Desktop.vista {
 
             panel2.Visible = false;
             panelInfoBasica.Visible = true;
+            //carga la imagen de usuario predefinida
+            imagen.Image = System.Drawing.Image.FromFile("C:\\Users\\user\\source\\repos\\miguelbogota\\tolotu\\desk-app\\Tolotu-Desktop\\imagenes\\default.PNG");
+            imagen.SizeMode = PictureBoxSizeMode.StretchImage;
          }
 
         private void label10_Click(object sender, EventArgs e){

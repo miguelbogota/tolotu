@@ -74,7 +74,7 @@ CREATE TABLE [usuario] (
 
   [rol] tinyint,
 
-  [imagen] image
+  [imagen] varchar(100)
   
  
 )
