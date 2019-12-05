@@ -125,9 +125,7 @@ namespace Tolotu_Desktop.Modelo
                 //cmd.Parameters["@[rol]"].Value = 2;
 
 
-                //System.IO.MemoryStream ms = new System.IO.MemoryStream();
-                //img.Image.Save(ms,System.Drawing.Imaging.ImageFormat.Jpeg);
-                //cmd.Parameters["@[imagen]"].Value = ms.GetBuffer();
+
                 cmd.ExecuteNonQuery();
               
 
