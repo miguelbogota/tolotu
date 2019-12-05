@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tolotu_Desktop.Vista;
+using Menu = Tolotu_Desktop.Vista.Menu;
 
 namespace Tolotu_Desktop {
 
@@ -17,7 +19,7 @@ namespace Tolotu_Desktop {
     static void Main() {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
-      Application.Run(new ventanaLogin());
+      Application.Run(new Menu());
     }
   }
 }
