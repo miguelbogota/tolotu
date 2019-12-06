@@ -17,23 +17,26 @@ namespace Tolotu_Desktop.modelo
 
 
         private modelo.Conexion con = new modelo.Conexion();
-
-        public Boolean validacion(string nombre, string clave)
-        {
-            Boolean res = false;
+        Boolean res = false;
+        public Boolean validacion(string nombre, string clave){
             con.abrirConx();
-
-            if (con.State != ConnectionState.Closed)
-            {
+            Console.WriteLine(con.conecta.State);
+            if (con.conecta.State != ConnectionState.Closed) {
+                
                 SqlCommand com = new SqlCommand();
                 com.Connection = con.conecta;
                 com.CommandType = CommandType.Text;
                 com.CommandText = "SELECT * FROM usuario WHERE [usuario] = '" + nombre + "' AND [contrasenia] = '" + clave + "';";
                 SqlDataReader reader = com.ExecuteReader();
-                if (reader.Read())
-                {
+                if (reader.Read()){
                     res = true;
                 }
+                else{
+                    res = false;
+                }
+            }
+            else{
+                Console.WriteLine("fallo");
             }
             con.cerrarConx();
             return res;

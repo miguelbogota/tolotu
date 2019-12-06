@@ -56,7 +56,11 @@ namespace Tolotu_Desktop {
         // Evento al dar click en el botón de entrar
         private void btnEntrar_Click(object sender, EventArgs e) {
 
-          contLog.entradaDatos(txtUsuario.Text, txtContraseña.Text);
+            if(contLog.entradaDatos(txtUsuario.Text, txtContraseña.Text)){
+                MessageBox.Show("Bienvenido", "Tolotu",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                new Vista.Menu().Show();
+                this.Hide();
+            }
         }
 
         // Estado: Activo

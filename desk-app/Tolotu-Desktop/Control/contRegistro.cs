@@ -28,10 +28,10 @@ namespace Tolotu_Desktop.Control
             Console.WriteLine("mod2 " + modReg.val(usu));
             if (modReg.val(usu) == true){
 
-                MessageBox.Show("El nombre de usuario '"+usu+"' ya esta registrado, Ingrese otro por favor.");
+                MessageBox.Show("El nombre de usuario '"+usu+"' ya esta registrado, Ingrese otro por favor.", "Tolotu - Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return true;
             }else{
-                MessageBox.Show("El nombre de usuario '" + usu + "' es valido para su uso");
+                MessageBox.Show("El nombre de usuario '" + usu + "' es valido para su uso", "Tolotu - Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
         }
@@ -41,7 +41,7 @@ namespace Tolotu_Desktop.Control
         public Boolean tomaDatos(String usu, String pass, String confPass, String Pnombres, String Snombres, String Papellidos, String Sapellidos, String correo,String genero, DateTime fecha, String tel,String Doc,String TDoc, PictureBox img ){
             Boolean vald = false;
             if(usu == "" || pass =="" ||  confPass == "" || Pnombres == "" ||Papellidos == "" || correo == "" || genero == "" || tel == "" || Doc == "" || TDoc == ""){
-                MessageBox.Show("Ha dejado algun campo sin llenar. Por favor verifique que que no haya dejado un campo vacio");
+                MessageBox.Show("Ha dejado algun campo sin llenar. Por favor verifique que que no haya dejado un campo vacio", "Tolotu - Falta informacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else{
                 if (pass.Equals(confPass) && convertInt(Doc)==true){
@@ -51,11 +51,12 @@ namespace Tolotu_Desktop.Control
                         imagen(img, usu);
                         if(modReg.registro(usu, pass, Pnombres, Snombres, Papellidos, Sapellidos, correo, gen, fecha, edad, tel, document, TDocu, URL)){
                             vald = true;
+                            MessageBox.Show("Se ha registrado exitosamente!", "Tolotu - Registro",MessageBoxButtons.OK,MessageBoxIcon.Information);
                         }
                         
                     }
                 } else {
-                    MessageBox.Show("No son iguales las contraseñas insertadas en los campos, por favor vuelva a intentarlo");
+                    MessageBox.Show("No son iguales las contraseñas insertadas en los campos, por favor vuelva a intentarlo", "Tolotu - Error",MessageBoxButtons.OK,MessageBoxIcon.Stop);
                 }
             }
             return vald;
@@ -65,7 +66,7 @@ namespace Tolotu_Desktop.Control
         // Creado por Juan Miguel Castro rojas - 4.12.2019
         // guarda la imagen en los archivos locales de la aplicacion
         public void imagen(PictureBox img,String usu){
-            //direccion exacta de donde se uubica la imagen
+            //direccion exacta de donde se uubica la imagen dentro de la carpeta del proyecto
             String FileName = Path.Combine(@"..\..\imagenes\");
             this.URL = @""+FileName+"Img-" + usu + ".Jpeg";
             img.Image.Save(URL, ImageFormat.Jpeg);
@@ -81,10 +82,9 @@ namespace Tolotu_Desktop.Control
              this.edad = System.DateTime.Now.Year - fecha.Year;
            
             if (System.DateTime.Now.Subtract(fecha.AddYears(edad)).TotalDays > 0){
-                
                 return true;    
             } else{
-                MessageBox.Show("la fecha de nacimiento que ha introducido es invaldia");
+                MessageBox.Show("la fecha de nacimiento que ha introducido es invaldia", "Tolotu - Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return false;
             }
         }

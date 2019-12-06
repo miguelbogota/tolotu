@@ -26,7 +26,6 @@ namespace Tolotu_Desktop.vista {
         
 
         private void button1_Click(object sender, EventArgs e){
-            Console.WriteLine("mod3 " + contReg.validar(txtusuario.Text));
             if (contReg.validar(txtusuario.Text)== false) {
                 txtusuario.Enabled = false;
                 btnValidar.Enabled = false;

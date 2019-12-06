@@ -14,7 +14,7 @@ namespace Tolotu_Desktop.modelo {
     // metodos de apertura y cierre de conexion a base de datos
     public class Conexion {
 
-        public SqlConnection conecta = new SqlConnection("Server=(local); Database=tolotuDB; Integrated Security=true");
+        public SqlConnection conecta = new SqlConnection("Server=(local); Database=tolotuBD; Integrated Security=true");
 
         public ConnectionState State { get; internal set; }
 
@@ -26,7 +26,8 @@ namespace Tolotu_Desktop.modelo {
           try {
             if (this.conecta.State == ConnectionState.Closed) {
               conecta.Open();
-              return conecta;
+                    Console.WriteLine(conecta.State+"3");
+                    return conecta;
             }
             else {
               return null;
