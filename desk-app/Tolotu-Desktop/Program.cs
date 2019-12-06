@@ -19,7 +19,7 @@ namespace Tolotu_Desktop {
     static void Main() {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
-      Application.Run(new Menu());
+      Application.Run(new ventanaLogin());
     }
   }
 }

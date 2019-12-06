@@ -19,28 +19,30 @@ namespace Tolotu_Desktop.Modelo
         // Estado: Activo
         // Creado por Juan Miguel Castro rojas - 24.11.2019
         // validacion con la base de datos para usuarios nuevos
+        private Boolean res =false;
         public Boolean val (String usuario){
-            Boolean res = false;
             con.abrirConx();
             SqlCommand cmd = new SqlCommand();
             try { 
                 if (con.State != ConnectionState.Closed){
-                SqlCommand com = new SqlCommand();
-                com.Connection = con.conecta;
-                com.CommandType = CommandType.Text;
-                com.CommandText = "SELECT * FROM usuario WHERE [usuario] = '" + usuario + "';";
-                SqlDataReader reader = com.ExecuteReader();
-                if (reader.Read()){
-                    res = true;
-                }
-            }
-            con.cerrarConx();
-            return res;
+                    SqlCommand com = new SqlCommand();
+                    com.Connection = con.conecta;
+                    com.CommandType = CommandType.Text;
+                    com.CommandText = "SELECT * FROM usuario WHERE [usuario] = '" + usuario + "';";
+                    SqlDataReader reader = com.ExecuteReader();
+                   // String usuarioS= reader.GetSqlValue('usuario');
+                    //Console.WriteLine(usuarioS);
+                    if (reader.HasRows){
+                        res = true;
+                    }
+                }  
+            
             }
             catch (Exception ex) {
                 MessageBox.Show("ha habido un error al conectar a la base de datos" + ex);
-                return res;
             }
+            con.cerrarConx();
+            return res;
         }
         // Estado: Activo
         // Creado por Juan Miguel Castro rojas - 26.11.2019
@@ -64,68 +66,15 @@ namespace Tolotu_Desktop.Modelo
 
             try
             {
-               // String query = "insrt into usuario([documento],[tipo_documento],[usuario],[primer_nombre],[segundo_nombre],[primer_apellido],[segundo_apellido],[correo],[tel],[genero],[fecha_nacimiento],[edad],[estado],[contrasenia],[rol],[imagen]) VALUES (" + Doc + "," + TDoc + ",'" + usu + "','" + Pnombre + "','" + Snombre + "','" + Papellido + "','" + Sapellido + "','" + correo + "','" + tel + "'," + genero + "," + fecha + "," + edad + "," + 1 + ",'" + pass + "'," + 2 + ",'" + img + "')";
-                String query = "insert into usuario ([documento],[tipo_documento],[usuario],[primer_nombre],[segundo_nombre],[primer_apellido],[segundo_apellido],[correo],[tel],[genero],[fecha_nacimiento],[edad],[estado],[contrasenia],[rol],[imagen]) VALUES (@[documento],@[tipo_documento],@[usuario],@[primer_nombre],@[segundo_nombre],@[primer_apellido],@[segundo_apellido],@[correo],@[tel],@[genero],@[fecha_nacimiento],@[edad],@[estado],@[contrasenia],@[rol],@[imagen])";
+                String query = "insert into usuario VALUES (" + Doc + "," + TDoc + ",'" + usu + "','" + Pnombre + "','" + Snombre + "','" + Papellido + "','" + Sapellido + "','" + correo + "','" + tel + "'," + genero + ",'" + fecha.ToString("yyyy-MM-dd HH:mm:ss") + "'," + edad + "," + 1 + ",'" + pass + "'," + 2 + ",'" + img + "');";
+                //String query = "insert into usuario ([documento],[tipo_documento],[usuario],[primer_nombre],[segundo_nombre],[primer_apellido],[segundo_apellido],[correo],[tel],[genero],[fecha_nacimiento],[edad],[estado],[contrasenia],[rol],[imagen]) VALUES (@[documento],@[tipo_documento],@[usuario],@[primer_nombre],@[segundo_nombre],@[primer_apellido],@[segundo_apellido],@[correo],@[tel],@[genero],@[fecha_nacimiento],@[edad],@[estado],@[contrasenia],@[rol],@[imagen])";
                 
                 con.abrirConx();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con.conecta;
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = query;
-
-                cmd.Parameters.AddWithValue("@[documento]", Doc);
-                cmd.Parameters.AddWithValue("@[tipo_documento]", TDoc);
-                cmd.Parameters.AddWithValue("@[usuario]", usu);
-                cmd.Parameters.AddWithValue("@[primer_nombre]", Pnombre);
-                cmd.Parameters.AddWithValue("@[segundo_nombre]", Snombre);
-                cmd.Parameters.AddWithValue("@[primer_apellido]",Papellido);
-                cmd.Parameters.AddWithValue("@[segundo_apellido]", Sapellido);
-                cmd.Parameters.AddWithValue("@[correo]", correo);
-                cmd.Parameters.AddWithValue("@[tel]", tel);
-                cmd.Parameters.AddWithValue("@[genero]", genero);
-                cmd.Parameters.AddWithValue("@[fecha_nacimiento]", fecha);
-                cmd.Parameters.AddWithValue("@[edad]", edad);
-                cmd.Parameters.AddWithValue("@[estado]", 1);
-                cmd.Parameters.AddWithValue("@[contrasenia]", pass);
-                cmd.Parameters.AddWithValue("@[rol]", 2);
-                cmd.Parameters.AddWithValue("@[imagen]",img);
-
-                //cmd.Parameters.Add("@[documento]",SqlDbType.Int);
-                //cmd.Parameters.Add("@[tipo_documento]", SqlDbType.TinyInt);
-                //cmd.Parameters.Add("@[usuario]", SqlDbType.VarChar);
-                //cmd.Parameters.Add("@[primer_nombre]", SqlDbType.VarChar);
-                //cmd.Parameters.Add("@[segundo_nombre]", SqlDbType.VarChar);
-                //cmd.Parameters.Add("@[primer_apellido]", SqlDbType.VarChar);
-                //cmd.Parameters.Add("@[segundo_apellido]", SqlDbType.VarChar);
-                //cmd.Parameters.Add("@[correo]", SqlDbType.VarChar);
-                //cmd.Parameters.Add("@[tel]", SqlDbType.VarChar);
-                //cmd.Parameters.Add("@[genero]", SqlDbType.TinyInt);
-                //cmd.Parameters.Add("@[fecha_nacimiento]", SqlDbType.Date);
-                //cmd.Parameters.Add("@[edad]", SqlDbType.TinyInt);
-                //cmd.Parameters.Add("@[estado]", SqlDbType.TinyInt);
-                //cmd.Parameters.Add("@[contrasenia]", SqlDbType.VarChar);
-                //cmd.Parameters.Add("@[rol]", SqlDbType.TinyInt);
-                //cmd.Parameters.Add("@[imagen]", SqlDbType.Image);
-
-
-                //cmd.Parameters["@[documento]"].Value = Doc;
-                //cmd.Parameters["@[tipo_documento]"].Value = TDoc;
-                //cmd.Parameters["@[usuario]"].Value = usu;
-                //cmd.Parameters["@[primer_nombre]"].Value = Pnombre;
-                //cmd.Parameters["@[segundo_nombre]"].Value = Snombre;
-                //cmd.Parameters["@[primer_apellido]"].Value = Papellido;
-                //cmd.Parameters["@[segundo_apellido]"].Value = Sapellido;
-                //cmd.Parameters["@[correo]"].Value = correo;
-                //cmd.Parameters["@[tel]"].Value = tel;
-                //cmd.Parameters["@[genero]"].Value = genero;
-                //cmd.Parameters["@[fecha_nacimiento]"].Value = fecha;
-                //cmd.Parameters["@[edad]"].Value = edad;
-                //cmd.Parameters["@[estado]"].Value = 1;
-                //cmd.Parameters["@[contrasenia]"].Value = pass;
-                //cmd.Parameters["@[rol]"].Value = 2;
-
-
-
+                
                 cmd.ExecuteNonQuery();
               
 

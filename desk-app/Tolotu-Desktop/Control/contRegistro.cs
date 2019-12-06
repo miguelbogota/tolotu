@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tolotu_Desktop.vista;
 using System.Drawing.Imaging;
+using System.IO;
 
 namespace Tolotu_Desktop.Control
 {
@@ -24,7 +25,9 @@ namespace Tolotu_Desktop.Control
         // Creado por Juan Miguel Castro rojas - 21.11.2019
         //  metodo que muestra el resultado de la validacion de usuario
         public Boolean validar(String usu){
+            Console.WriteLine("mod2 " + modReg.val(usu));
             if (modReg.val(usu) == true){
+
                 MessageBox.Show("El nombre de usuario '"+usu+"' ya esta registrado, Ingrese otro por favor.");
                 return true;
             }else{
@@ -35,7 +38,8 @@ namespace Tolotu_Desktop.Control
         // Estado: Activo
         // Creado por Juan Miguel Castro rojas - 23.11.2019
         //  metodo que valida que ningun campo falte por llenar y redirige a la base de datos
-        public void tomaDatos(String usu, String pass, String confPass, String Pnombres, String Snombres, String Papellidos, String Sapellidos, String correo,String genero, DateTime fecha, String tel,String Doc,String TDoc, PictureBox img ){
+        public Boolean tomaDatos(String usu, String pass, String confPass, String Pnombres, String Snombres, String Papellidos, String Sapellidos, String correo,String genero, DateTime fecha, String tel,String Doc,String TDoc, PictureBox img ){
+            Boolean vald = false;
             if(usu == "" || pass =="" ||  confPass == "" || Pnombres == "" ||Papellidos == "" || correo == "" || genero == "" || tel == "" || Doc == "" || TDoc == ""){
                 MessageBox.Show("Ha dejado algun campo sin llenar. Por favor verifique que que no haya dejado un campo vacio");
             }
@@ -45,12 +49,16 @@ namespace Tolotu_Desktop.Control
                     // se valida si la conversion de numero de documento y la edad son validos
                     if (convertInt(Doc) ==true && IdentificarEdad(fecha)==true){
                         imagen(img, usu);
-                        modReg.registro(usu, pass, Pnombres, Snombres, Papellidos, Sapellidos, correo, gen, fecha,edad,tel,document,TDocu,URL);
+                        if(modReg.registro(usu, pass, Pnombres, Snombres, Papellidos, Sapellidos, correo, gen, fecha, edad, tel, document, TDocu, URL)){
+                            vald = true;
+                        }
+                        
                     }
                 } else {
                     MessageBox.Show("No son iguales las contraseñas insertadas en los campos, por favor vuelva a intentarlo");
                 }
-            }     
+            }
+            return vald;
         }
 
         // Estado: Activo
@@ -58,7 +66,8 @@ namespace Tolotu_Desktop.Control
         // guarda la imagen en los archivos locales de la aplicacion
         public void imagen(PictureBox img,String usu){
             //direccion exacta de donde se uubica la imagen
-            this.URL = @"C:\Users\user\source\repos\miguelbogota\tolotu\desk-app\Tolotu-Desktop\imagenes\Img-" + usu + ".Jpeg";
+            String FileName = Path.Combine(@"..\..\imagenes\");
+            this.URL = @""+FileName+"Img-" + usu + ".Jpeg";
             img.Image.Save(URL, ImageFormat.Jpeg);
         }
 

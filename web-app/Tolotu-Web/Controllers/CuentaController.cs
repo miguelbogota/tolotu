@@ -29,6 +29,8 @@ namespace Tolotu_Web.Controllers {
     // Propiedad para guardar los datos del usuario en el registro.
     [BindProperty]
     public Usuario UsuarioRegistro { get; set; }
+     [BindProperty]
+        public Usuario UsuarioLogin { get; set; } 
 
     // Estado: Activo
     // Creado por Miguel Bogota - 24.11.2019
@@ -39,6 +41,18 @@ namespace Tolotu_Web.Controllers {
 
       return Redirect("/Index");
     }
+        public async Task<IActionResult> OnSubmitLogin([Bind("usuario, contrasena")] Usuario UsuarioRegistro)
+        {
 
-  }
+            System.Diagnostics.Debug.WriteLine(UsuarioLogin.ToString());
+
+           if(this.UsuarioLogin.validar())
+            {
+                return Redirect("/Privacidad");
+            }
+
+
+            return Redirect("/Index");
+        }
+    }
 }

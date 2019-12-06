@@ -19,6 +19,11 @@ namespace Tolotu_Web.Models {
     public Usuario() {
 
     }
+    public Boolean validar()
+    {
+
+            return true;
+    }
 
     // Mostrar información de forma organizada
     public override string ToString() {

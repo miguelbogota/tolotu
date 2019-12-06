@@ -1,5 +1,48 @@
-﻿@{
-  ViewData["Titulo"] = "Iniciar Sesión";
+﻿@model Tolotu_Web.Controllers.CuentaController
+@{
+    ViewData["Titulo"] = "Iniciar Sesión";
 }
 
+<div class="row">
+    <div class="col-lg-5 col-md-2"></div>
+    <div class="col-lg-5 col-md-8">
 
+        <!-- Logo -->
+        <div class="card">
+            <img src="~/img/Tolot_Logo.png" class="card-img-top h-50" alt="Logo">
+            <div class="card-body pb-1 pl-5 pr-5 pt-0 text-center">
+
+                <!-- Titulo -->
+                <div class="text-muted font-weight-bold mb-3">
+                    <p>Login</p>
+                </div>
+
+                <!-- Form donde se van a pedir todos los datos del usuario y se van a guardar en el controlador en la propiedad usuario -->
+                <form method="post" asp-action="OnSubmitLogin">
+                    <input type="text" class="form-control mb-2" placeholder="Usuario" asp-for="UsuarioLogin.usuario">
+                    <input type="password" class="form-control mb-3" placeholder="Contraseña" asp-for="UsuarioLogin.contrasena">
+
+                    <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="col-lg-2 col-md-2"></div>
+</div>
+
+<!-- Inicio de sesion en caso de que ya tenga cuenta -->
+<div class="row">
+    <div class="col-lg-5 col-md-2"></div>
+    <div class="col-lg-5 col-md-8">
+
+        <div class="card mt-3 text-center">
+            <div class="card-body">
+                ¿Ya tienes una cuenta? <a asp-area="" asp-controller="Cuenta" asp-action="Registro">Registro</a>.
+            </div>
+        </div>
+
+    </div>
+    <div class="col-lg-2 col-md-2"></div>
+</div>
