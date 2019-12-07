@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Tolotu_Desktop.Objetos;
+using Tolotu_Desktop.Models.Objetos;
 
 namespace Tolotu_Desktop.Vista {
 
@@ -106,9 +106,9 @@ namespace Tolotu_Desktop.Vista {
       this.container.AutoScroll = true;
       this.i = this.i + 1;
     }
- 
 
 
-    
+
+
   }
 }

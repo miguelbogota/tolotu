@@ -46,33 +46,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Control\ContLogin.cs" />
-    <Compile Include="Control\contRegistro.cs" />
-    <Compile Include="Modelo\Conexion.cs" />
-    <Compile Include="Modelo\modLogin.cs" />
-    <Compile Include="Modelo\modRegistro.cs" />
-    <Compile Include="Objetos\Actividad.cs" />
-    <Compile Include="Vista\Login.cs">
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RegistroController.cs" />
+    <Compile Include="Models\Conexion.cs" />
+    <Compile Include="Models\modLogin.cs" />
+    <Compile Include="Models\modRegistro.cs" />
+    <Compile Include="Models\Objetos\Actividad.cs" />
+    <Compile Include="Models\Servicios\ServicioActividad.cs" />
+    <Compile Include="Models\Servicios\ServicioDB.cs" />
+    <Compile Include="tolotuDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tolotuDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vista\Login.Designer.cs">
+    <Compile Include="Views\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Vista\Menu.cs">
+    <Compile Include="Views\Menu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vista\Menu.Designer.cs">
+    <Compile Include="Views\Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vista\Registrocs.cs">
+    <Compile Include="Views\Registrocs.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vista\Registrocs.Designer.cs">
+    <Compile Include="Views\Registrocs.Designer.cs">
       <DependentUpon>Registrocs.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Vista\Login.resx">
+    <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -84,10 +91,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Vista\Menu.resx">
+    <EmbeddedResource Include="Views\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vista\Registrocs.resx">
+    <EmbeddedResource Include="Views\Registrocs.resx">
       <DependentUpon>Registrocs.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -99,6 +106,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="tolotuDBDataSet.xsc">
+      <DependentUpon>tolotuDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="tolotuDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>tolotuDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="tolotuDBDataSet.xss">
+      <DependentUpon>tolotuDBDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
