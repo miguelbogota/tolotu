@@ -24,32 +24,33 @@ namespace Tolotu_Desktop {
       InitializeComponent();
     }
 
-    // Estado: Activo
-    // Creado por Juan Castro - 13.11.2019
-    // Evento para crear un placeholder
-    private void txtUsuario_MouseClick(object sender, MouseEventArgs e) {
-      // Evento para visualizar mensages predeterminados cuando el usuario no ha introducido un valor
-      // en el campo de texto
-      if (txtUsuario.Text == "Ingresa tu usuario") {
-        txtUsuario.Text = "";
-      }
-      if (txtContraseña.Text == "") {
-        txtContraseña.Text = "Ingresa tu contraseña";
-      }
+        // Estado: DESACTIVO
+        // Creado por Juan Castro - 13.11.2019
+        // Evento para crear un placeholder
+        private void txtUsuario_MouseClick(object sender, MouseEventArgs e) {
+      //// Evento para visualizar mensages predeterminados cuando el usuario no ha introducido un valor
+      //// en el campo de texto
+      //if (txtUsuario.Text == "Ingresa tu usuario") {
+      //  txtUsuario.Text = "";
+      //}
+      //if (txtContraseña.Text == "") {
+      //  txtContraseña.Text = "Ingresa tu contraseña";
+      //}
     }
-    // Estado: Activo
+    // Estado: DESACTIVO
     // Creado por Juan Castro - 13.11.2019
     // Evento para crear un placeholder
     private void txtContraseña_MouseClick(object sender, MouseEventArgs e) {
-      // Evento para visualizar mensages predeterminados cuando el usuario no ha introducido un valor
-      // en el campo de texto
-      if (txtContraseña.Text == "Ingresa tu contraseña") {
-        txtContraseña.Text = "";
-      }
-      if (txtUsuario.Text == "") {
-        txtUsuario.Text = "Ingresa tu usuario";
-      }
+    //  // Evento para visualizar mensages predeterminados cuando el usuario no ha introducido un valor
+    //  // en el campo de texto
+    //  if (txtContraseña.Text == "Ingresa tu contraseña") {
+    //    txtContraseña.Text = "";
+    //  }
+    //  if (txtUsuario.Text == "") {
+    //    txtUsuario.Text = "Ingresa tu usuario";
+    //  }
     }
+        //SE 
 
     // Estado: Activo
     // Creado por Juan Miguel Castro rojas - 13.11.2019
@@ -70,5 +71,37 @@ namespace Tolotu_Desktop {
       reg.Show();
       this.Hide();
     }
-  }
+        // Estado: ACTIVO
+        // Creado por Juan Castro - 8.12.2019
+        // Evento para focus
+        private void txtUsuario_Enter(object sender, EventArgs e) {
+            // Evento para limpiar el campo de texto al momento de hacer focus
+                txtUsuario.Text = ""; 
+        }
+        // Estado: ACTIVO
+        // Creado por Juan Castro - 8.12.2019
+        //  Evento para focus
+        private void txtContraseña_Enter(object sender, EventArgs e){
+            // Evento para limpiar el campo de texto al momento de hacer focus
+            txtContraseña.Text = "";
+        }
+        // Estado: ACTIVO
+        // Creado por Juan Castro - 8.12.2019
+        //  Evento para lost_focus
+        private void txtUsuario_Leave(object sender, EventArgs e){
+            //evento para volver a imprimir la frase predeterminada para el campo de texto en caso de que no se haya insertado nada
+            if (txtUsuario.Text == "") {
+                txtUsuario.Text = "Ingresa tu contraseña";
+            }
+        }
+        // Estado: ACTIVO
+        // Creado por Juan Castro - 8.12.2019
+        //  Evento para lost_focus
+        private void txtContraseña_Leave(object sender, EventArgs e){
+            //evento para volver a imprimir la frase predeterminada para el campo de texto en caso de que no se haya insertado nada
+            if (txtContraseña.Text == "") {
+                txtContraseña.Text = "Ingresa tu contraseña";
+            }
+        }
+    }
 }

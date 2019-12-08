@@ -179,7 +179,7 @@
             this.panelInfoBasica.Controls.Add(this.txtPApellidos);
             this.panelInfoBasica.Controls.Add(this.label5);
             this.panelInfoBasica.Controls.Add(this.txtCorreos);
-            this.panelInfoBasica.Location = new System.Drawing.Point(-2, -2);
+            this.panelInfoBasica.Location = new System.Drawing.Point(12, 187);
             this.panelInfoBasica.Name = "panelInfoBasica";
             this.panelInfoBasica.Size = new System.Drawing.Size(715, 339);
             this.panelInfoBasica.TabIndex = 17;
@@ -295,7 +295,6 @@
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.btnAtras);
-            this.panel2.Controls.Add(this.panelInfoBasica);
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.txtTel);
             this.panel2.Controls.Add(this.label);
@@ -463,6 +462,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(739, 538);
             this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.panelInfoBasica);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtusuario);
             this.Controls.Add(this.label1);

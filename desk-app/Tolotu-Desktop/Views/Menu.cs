@@ -107,8 +107,13 @@ namespace Tolotu_Desktop.Vista {
       this.i = this.i + 1;
     }
 
-
-
-
-  }
+        // Estado: Activo
+        // Creado por Juan Castro - 8.12.2019
+        // boton para cerrar sesion y volver a login
+        private void btnCerrarSesion_Click(object sender, EventArgs e){
+            Login log = new Login();
+            this.Hide();
+            log.Show();
+        }
+    }
 }
