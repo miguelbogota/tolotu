@@ -48,9 +48,13 @@ namespace Tolotu_Desktop.Control {
           // se valida si la conversion de numero de documento y la edad son validos
           if (convertInt(Doc) == true && IdentificarEdad(fecha) == true) {
             imagen(img, usu);
-            if (modReg.registro(usu, pass, Pnombres, Snombres, Papellidos, Sapellidos, correo, gen, fecha, edad, tel, document, TDocu, URL)) {
-              vald = true;
-              MessageBox.Show("Se ha registrado exitosamente!", "Tolotu - Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if(!modReg.doc(document)){
+               if (modReg.registro(usu, pass, Pnombres, Snombres, Papellidos, Sapellidos, correo, gen, fecha, edad, tel, document, TDocu, URL)) {
+                   vald = true;
+                    MessageBox.Show("Se ha registrado exitosamente!", "Tolotu - Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               }
+            }else{
+               MessageBox.Show("El documento ingresado ya se encuetra registrado, si usted ya esta registrado por favor no cree una cuenta nueva", "Tolotu - Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
           }
         }
@@ -79,7 +83,7 @@ namespace Tolotu_Desktop.Control {
 
       this.edad = System.DateTime.Now.Year - fecha.Year;
 
-      if (System.DateTime.Now.Subtract(fecha.AddYears(edad)).TotalDays > 0) {
+      if (System.DateTime.Now.Subtract(fecha.AddYears(edad)).TotalDays < 0) {
             return true;
       } else {
             MessageBox.Show("la fecha de nacimiento que ha introducido es invaldia", "Tolotu - Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);

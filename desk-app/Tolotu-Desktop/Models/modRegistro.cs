@@ -16,10 +16,38 @@ namespace Tolotu_Desktop.Modelo
         // modelo para registro
         private modelo.Conexion con = new modelo.Conexion();
 
+       
+        private Boolean res =false;
+        // Estado: Activo
+        // Creado por Juan Miguel Castro rojas - 08.12.2019
+        // validacion con la base de datos para documento
+        public Boolean doc(int documento){
+            con.abrirConx();
+            SqlCommand cmd = new SqlCommand();
+            try {
+               
+                if (con.conecta.State != ConnectionState.Closed){
+                    SqlCommand com = new SqlCommand();
+                    com.Connection = con.conecta;
+                    com.CommandType = CommandType.Text;
+                    com.CommandText = "SELECT * FROM usuario WHERE [documento] = '" + documento + "';";
+                    SqlDataReader reader = com.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        res = true;
+                    } else{
+                        res = false;
+                    }
+                }
+            }catch (Exception ex) {
+                MessageBox.Show("ha habido un error al conectar a la base de datos" + ex, "Tolotu - Error de conexion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.cerrarConx();
+            return res;
+        }
         // Estado: Activo
         // Creado por Juan Miguel Castro rojas - 24.11.2019
         // validacion con la base de datos para usuarios nuevos
-        private Boolean res =false;
         public Boolean val (String usuario){
             con.abrirConx();
             SqlCommand cmd = new SqlCommand();
@@ -34,13 +62,11 @@ namespace Tolotu_Desktop.Modelo
                     SqlDataReader reader = com.ExecuteReader();
                     if (reader.Read()){
                         res = true;
-                    }
-                    else{
+                    }else{
                         res = false;
                     }
                 }
-            }
-            catch (Exception ex) {
+            }catch (Exception ex) {
                 MessageBox.Show("ha habido un error al conectar a la base de datos" + ex, "Tolotu - Error de conexion", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             con.cerrarConx();
@@ -75,8 +101,7 @@ namespace Tolotu_Desktop.Modelo
                 cmd.ExecuteNonQuery();
                 con.cerrarConx();
                 return true;
-            }
-            catch (Exception ex){
+            }catch (Exception ex){
                 MessageBox.Show("ha habido un inconveniente con el registro, Por favor vuelva a intentar. " + ex, "Tolotu - Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             return true;
