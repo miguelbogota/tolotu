@@ -26,7 +26,6 @@ namespace Tolotu_Desktop.modelo {
       try {
         if (this.conecta.State == ConnectionState.Closed) {
           conecta.Open();
-          Console.WriteLine(conecta.State + "3");
           return conecta;
         }
         else {

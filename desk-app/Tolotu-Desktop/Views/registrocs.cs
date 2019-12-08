@@ -23,9 +23,10 @@ namespace Tolotu_Desktop.vista {
       InitializeComponent();
     }
 
-
+        private Boolean val;
     private void button1_Click(object sender, EventArgs e) {
-      if (contReg.validar(txtusuario.Text) == false) {
+       val = contReg.validar(txtusuario.Text);
+      if (val == false) {
         txtusuario.Enabled = false;
         btnValidar.Enabled = false;
         panelInfoBasica.Enabled = true;

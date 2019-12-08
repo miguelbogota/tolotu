@@ -32,11 +32,13 @@ namespace Tolotu_Desktop.Modelo
                     com.CommandType = CommandType.Text;
                     com.CommandText = "SELECT * FROM usuario WHERE [usuario] = '" + usuario + "';";
                     SqlDataReader reader = com.ExecuteReader();
-                    if (reader.Read())
-                    {
+                    if (reader.Read()){
                         res = true;
                     }
-                }  
+                    else{
+                        res = false;
+                    }
+                }
             }
             catch (Exception ex) {
                 MessageBox.Show("ha habido un error al conectar a la base de datos" + ex, "Tolotu - Error de conexion", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -66,7 +68,6 @@ namespace Tolotu_Desktop.Modelo
                 //String query = "insert into usuario ([documento],[tipo_documento],[usuario],[primer_nombre],[segundo_nombre],[primer_apellido],[segundo_apellido],[correo],[tel],[genero],[fecha_nacimiento],[edad],[estado],[contrasenia],[rol],[imagen]) VALUES (@[documento],@[tipo_documento],@[usuario],@[primer_nombre],@[segundo_nombre],@[primer_apellido],@[segundo_apellido],@[correo],@[tel],@[genero],@[fecha_nacimiento],@[edad],@[estado],@[contrasenia],@[rol],@[imagen])";
                 
                 con.abrirConx();
-                Console.WriteLine(con.State +"2");
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con.conecta;
                 cmd.CommandType = CommandType.Text;

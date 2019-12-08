@@ -25,16 +25,13 @@ namespace Tolotu_Desktop.Control {
     // Creado por Juan Miguel Castro rojas - 21.11.2019
     //  metodo que muestra el resultado de la validacion de usuario
     public Boolean validar(String usu) {
-      Console.WriteLine("mod2 " + modReg.val(usu));
-      if (modReg.val(usu) == true) {
-
-        MessageBox.Show("El nombre de usuario '" + usu + "' ya esta registrado, Ingrese otro por favor.", "Tolotu - Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-        return true;
-      }
-      else {
-        MessageBox.Show("El nombre de usuario '" + usu + "' es valido para su uso", "Tolotu - Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        return false;
-      }
+        if (modReg.val(usu) == true) {
+            MessageBox.Show("El nombre de usuario '" + usu + "' ya esta registrado, Ingrese otro por favor.", "Tolotu - Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            return true;
+        } else {
+            MessageBox.Show("El nombre de usuario '" + usu + "' es valido para su uso", "Tolotu", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
+        }
     }
 
     // Estado: Activo
@@ -55,7 +52,6 @@ namespace Tolotu_Desktop.Control {
               vald = true;
               MessageBox.Show("Se ha registrado exitosamente!", "Tolotu - Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
           }
         }
         else {
@@ -84,11 +80,10 @@ namespace Tolotu_Desktop.Control {
       this.edad = System.DateTime.Now.Year - fecha.Year;
 
       if (System.DateTime.Now.Subtract(fecha.AddYears(edad)).TotalDays > 0) {
-        return true;
-      }
-      else {
-        MessageBox.Show("la fecha de nacimiento que ha introducido es invaldia", "Tolotu - Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-        return false;
+            return true;
+      } else {
+            MessageBox.Show("la fecha de nacimiento que ha introducido es invaldia", "Tolotu - Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            return false;
       }
     }
 
