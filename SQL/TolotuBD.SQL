@@ -253,7 +253,17 @@ INSERT INTO [roles] ([rol]) VALUES ('Admin'),
 ('Usuario');
 
 
+CREATE PROCEDURE [Consulta]
+@documento varchar(50),
+@outputs varchar(50) output
+AS    
+BEGIN
 
+  DECLARE @document_INT int = CONVERT(INT, @documento)
+  SELECT * FROM [Tipo_documento] WHERE [Tipo_documentoId]=@document_INT
+  SET @outputs = (SELECT [tipo] FROM [Tipo_documento] WHERE [Tipo_documentoId]=@document_INT)
+
+END
 
 
 
