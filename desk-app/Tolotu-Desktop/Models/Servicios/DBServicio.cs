@@ -101,7 +101,7 @@ namespace Tolotu_Desktop.Models.Servicios {
           string[] values = param.Split(',').Select(sValue => sValue.Trim()).ToArray(); // Divide el parametro y el valor
           // Agregar si es input
           if (!values[0].Equals("out")) {
-            comando.Parameters.Add(values[0], SqlDbType.VarChar).Value = values[1]; // Asigna el parametro y el valor
+            comando.Parameters.Add(values[0], (SqlDbType)Enum.Parse(typeof(SqlDbType), values[2], true)).Value = values[1]; // Asigna el parametro y el valor
           }
           // Agregar si es ouyput
           else {
@@ -143,7 +143,7 @@ namespace Tolotu_Desktop.Models.Servicios {
         // Agregar cada parametro a el procedimiento almacenado
         foreach (string param in parametros) {
           string[] values = param.Split(',').Select(sValue => sValue.Trim()).ToArray(); // Divide el parametro y el valor
-          comando.Parameters.Add(values[0], SqlDbType.VarChar).Value = values[1]; // Asigna el parametro y el valor
+          comando.Parameters.Add(values[0], (SqlDbType)Enum.Parse(typeof(SqlDbType), values[2], true)).Value = values[1]; // Asigna el parametro y el valor
         }
         comando.ExecuteNonQuery(); // Ejecutar el comando
       }

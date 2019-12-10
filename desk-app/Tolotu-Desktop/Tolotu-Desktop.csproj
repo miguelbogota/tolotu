@@ -52,8 +52,10 @@
     <Compile Include="Models\modLogin.cs" />
     <Compile Include="Models\modRegistro.cs" />
     <Compile Include="Models\Objetos\Actividad.cs" />
-    <Compile Include="Models\Servicios\ServicioActividad.cs" />
-    <Compile Include="Models\Servicios\ServicioDB.cs" />
+    <Compile Include="Models\Objetos\Usuario.cs" />
+    <Compile Include="Models\Servicios\ActividadServicio.cs" />
+    <Compile Include="Models\Servicios\DBServicio.cs" />
+    <Compile Include="Models\Servicios\UsuarioServicio.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Views\Login.cs">
       <SubType>Form</SubType>
