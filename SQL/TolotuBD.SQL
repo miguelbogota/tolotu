@@ -229,3 +229,49 @@ AS
 BEGIN
   INSERT INTO usuario VALUES (@Numero_Documento, @tipo_documento, @usuario, @primer_nombre, @segundo_nombre, @primer_apellido, @segundo_apellido, @correo, @tel, @genero, @fecha_nacimiento, @edad, @estado, @contrasenia, @rol, @imagen)
 END
+
+CREATE PROCEDURE [IniciarSesion]
+@usuario varchar(30),
+@contrasenia varchar(30),
+@result int out,
+@Numero_Documento int out,
+@tipo_documento varchar(60) out,
+@primer_nombre varchar(20) out,
+@segundo_nombre varchar(20) out,
+@primer_apellido varchar(20) out,
+@segundo_apellido varchar(20) out,
+@correo varchar(60) out,
+@tel varchar(20) out,
+@genero varchar(60) out,
+@fecha_nacimiento datetime out,
+@edad tinyint out,
+@estado varchar(60) out,
+@rol varchar(60) out,
+@imagen varchar(100) out
+AS    
+BEGIN
+  DECLARE @output varchar(50)
+  SET @output = (SELECT [documento] FROM [usuario] WHERE [usuario]=@usuario AND [contrasenia]=@contrasenia)
+  IF @output > 0
+  BEGIN
+    SET @result = 1
+    SET @Numero_Documento = (SELECT [documento] FROM [usuario] WHERE [usuario]=@usuario AND [contrasenia]=@contrasenia)
+	SET @tipo_documento = (SELECT tipo.[tipo] FROM [usuario] usu JOIN [Tipo_documento] tipo ON tipo.[Tipo_documentoId] = usu.[tipo_documento] WHERE [usuario]=@usuario AND [contrasenia]=@contrasenia)
+    SET @primer_nombre = (SELECT [primer_nombre] FROM [usuario] WHERE [usuario]=@usuario AND [contrasenia]=@contrasenia)
+	SET @segundo_nombre = (SELECT [segundo_nombre] FROM [usuario] WHERE [usuario]=@usuario AND [contrasenia]=@contrasenia)
+    SET @primer_apellido = (SELECT [primer_apellido] FROM [usuario] WHERE [usuario]=@usuario AND [contrasenia]=@contrasenia)
+    SET @segundo_apellido = (SELECT [segundo_apellido] FROM [usuario] WHERE [usuario]=@usuario AND [contrasenia]=@contrasenia)
+    SET @correo = (SELECT [correo] FROM [usuario] WHERE [usuario]=@usuario AND [contrasenia]=@contrasenia)
+    SET @tel = (SELECT [tel] FROM [usuario] WHERE [usuario]=@usuario AND [contrasenia]=@contrasenia)
+    SET @genero = (SELECT genero.[genero] FROM [usuario] usu JOIN [genero] genero ON genero.[generoId] = usu.[genero] WHERE [usuario]=@usuario AND [contrasenia]=@contrasenia)
+    SET @fecha_nacimiento = (SELECT [fecha_nacimiento] FROM [usuario] WHERE [usuario]=@usuario AND [contrasenia]=@contrasenia)
+    SET @edad = (SELECT [edad] FROM [usuario] WHERE [usuario]=@usuario AND [contrasenia]=@contrasenia)
+    SET @estado = (SELECT estado.[estado] FROM [usuario] usu JOIN [estados] estado ON estado.[estadoId] = usu.[estado] WHERE [usuario]=@usuario AND [contrasenia]=@contrasenia)
+    SET @rol = (SELECT rol.rol FROM [usuario] usu JOIN [roles] rol ON rol.[rolesId] = usu.[rol] WHERE [usuario]=@usuario AND [contrasenia]=@contrasenia)
+    SET @imagen = (SELECT [imagen] FROM [usuario] WHERE [usuario]=@usuario AND [contrasenia]=@contrasenia)
+  END
+  ELSE
+  BEGIN
+    SET @result = 0
+  END
+END

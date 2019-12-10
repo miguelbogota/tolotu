@@ -12,9 +12,6 @@ namespace Tolotu_Desktop.Models.Servicios {
   // Clase de funciones de la base de datos del objeton usuario.
   public class UsuarioServicio {
 
-    private const string nombreTabla = ""; // Nombre de la tabla de la base de datos
-    private const string query = ""; // Query para traer la informacion de la base de datos
-
     private DBServicio DB { get; set; } // Base de datos
     private List<Usuario> Usuarios { get; set; } // Lista de usuarios de la base de datos
 
@@ -68,11 +65,51 @@ namespace Tolotu_Desktop.Models.Servicios {
     // Estado: Activo
     // Creado por Miguel Bogota - 09.12.2019
     // Funcion para iniciar sesion a un usuario, si returna el usuario inicio sesion corectamente, de lo contrario no
-    public Usuario IniciarSesion(Usuario usuario) {
+    public Usuario IniciarSesion(string usuario, string contrasenia) {
       Usuario usuarioTemp = null; // Usuario a devolver
-      // Hacer validacion de la base de datos
-      if (this.DB.ProcedimientoReturn("HayUsuario", "@documento, " + usuario.Documento + ", int", "out, @result, int, 5")[0].Equals("1")) {
-        // En trabajo
+      // Buscar en la base de datos informacion y guardarla
+      string[] usuarioArray = this.DB.ProcedimientoReturn(
+        "IniciarSesion", // Nombre procedimiento almacenado
+        "@usuario, " + usuario + ", varchar", // Usuario a validar
+        "@contrasenia, " + contrasenia + ", varchar", // Contraseña a validar
+        // Outputs
+        "out, @result, int, 5", // Validacion si usuario y contraseña correcta
+        "out, @Numero_Documento, int, 50", // Numero de documento
+        "out, @tipo_documento, varchar, 50", // Tipo de documento
+        "out, @primer_nombre, varchar, 50", // Primer nombre
+        "out, @segundo_nombre, varchar, 50", // Segundo nombre
+        "out, @primer_apellido, varchar, 50", // Primer apellido
+        "out, @segundo_apellido, varchar, 50", // Segundo apellido
+        "out, @correo, varchar, 50", // Correo electronico
+        "out, @tel, varchar, 50", // Telefono
+        "out, @genero, varchar, 50", // Genero
+        "out, @fecha_nacimiento, datetime, 50", // Fecha de nacimiento
+        "out, @edad, tinyint, 0", // Edad
+        "out, @estado, varchar, 50", // Estado
+        "out, @rol, varchar, 50", // Rol
+        "out, @imagen, varchar, 50" // URL imagen de perfil
+      );
+      // Hacer validacion de la base de datos, si el primer output devuelve 1 el usuario y contraseña es correcto
+      if (usuarioArray[0].Equals("1")) {
+        // Guardar datos de la base de datos en usuario
+        usuarioTemp = new Usuario(
+          Convert.ToInt32(usuarioArray[1]), // Documento
+          usuarioArray[2], // Tipo documento
+          usuario, // Usuario
+          usuarioArray[3], // Primero nombre
+          usuarioArray[4], // Segundo nombre
+          usuarioArray[5], // Primer apellido
+          usuarioArray[6], // Segundo apellido
+          usuarioArray[7], // Correo electronico
+          usuarioArray[8], // Telefono
+          usuarioArray[9], // Genero
+          Convert.ToDateTime(usuarioArray[10]), // Fecha de nacimiento
+          Convert.ToInt32(usuarioArray[11]), // Edad
+          usuarioArray[12], // Estado
+          contrasenia, // Constraseña
+          usuarioArray[13], // Rol
+          usuarioArray[14] // URL Imagen
+        );
       }
       return usuarioTemp;
     }
