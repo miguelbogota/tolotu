@@ -13,8 +13,8 @@ namespace Tolotu_Desktop.Models.Servicios {
   // Clase de funciones de la base de datos.
   public class DBServicio {
 
-    private const string server = "(local)\\SQLINSTANCE"; // Nombre del servidor
-    private const string database = "TolotuDB"; // Nombre de la base de datos
+    private const string server = "(local)"; // Nombre del servidor
+    private const string database = "TolotuBD"; // Nombre de la base de datos
 
     private string DBName { get; set; } // Nombre de conexión a base de datos
     private SqlConnection conn { get; set; } // Conexión a la base de datos

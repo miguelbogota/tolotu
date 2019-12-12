@@ -15,7 +15,7 @@ namespace Tolotu_Desktop {
     [STAThread]
     static void Main() {
 
-      // new UsuarioServicio().Agregar(new Models.Objetos.Usuario(123213, "Pasaporte", "Migue", "Miguel", "Angel", "Bogota", "Rico", "miguel@gmail.com", "3197029889", "Hombre", new DateTime(1996, 11, 09), 23, "Activo", "1234", "Admin", "../imagenes"));
+      new UsuarioServicio().Agregar(new Models.Objetos.Usuario(12321356, "Pasaporte", "Migue", "Miguel", "Angel", "Bogota", "Rico", "miguel@gmail.com", "3197029889", "Hombre", new DateTime(1996, 11, 09), 23, "Activo", "1234", "Admin", "../imagenes"));
 
       Console.WriteLine(new UsuarioServicio().IniciarSesion("Migu", "1234"));
 
