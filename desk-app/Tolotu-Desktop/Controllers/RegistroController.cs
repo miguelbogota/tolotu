@@ -5,11 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Tolotu_Desktop.vista;
+using Tolotu_Desktop.Views;
 using System.Drawing.Imaging;
 using System.IO;
+using Tolotu_Desktop.Models.Servicios;
 
-namespace Tolotu_Desktop.Control {
+namespace Tolotu_Desktop.Controllers {
 
   // Estado: Activo
   // Creado por Juan Miguel Castro rojas - 23.11.2019
@@ -22,21 +23,28 @@ namespace Tolotu_Desktop.Control {
     Modelo.modRegistro modReg = new Modelo.modRegistro();
 
     // Estado: Activo
-    // Creado por Juan Miguel Castro rojas - 21.11.2019
-    //  metodo que muestra el resultado de la validacion de usuario
-    public Boolean validar(String usu) {
-        if (modReg.val(usu) == true) {
-            MessageBox.Show("El nombre de usuario '" + usu + "' ya esta registrado, Ingrese otro por favor.", "Tolotu - Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            return true;
-        } else {
-            MessageBox.Show("El nombre de usuario '" + usu + "' es valido para su uso", "Tolotu", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            return false;
-        }
+    // Creado por Juan Castro - 21.11.2019
+    // Metodo que muestra el resultado de la validacion de usuario
+    public bool ValidarUsuario(TextBox text, Button btn, Panel panel) {
+      // Validar si el usuario ya existe
+      bool val = new UsuarioServicio().UsuarioExiste(text.Text);
+      if (val) {
+        MessageBox.Show("El nombre de usuario '" + text.Text + "' ya esta registrado, Ingrese otro por favor.", "Tolotu - Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        return true;
+      }
+      else {
+        MessageBox.Show("El nombre de usuario '" + text.Text + "' es valido para su uso", "Tolotu", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        // Esconder menu de validacion
+        text.Enabled = false;
+        btn.Enabled = false;
+        panel.Enabled = true;
+        return false;
+      }
     }
 
     // Estado: Activo
-    // Creado por Juan Miguel Castro rojas - 23.11.2019
-    //  metodo que valida que ningun campo falte por llenar y redirige a la base de datos
+    // Creado por Juan Castro - 23.11.2019
+    // Metodo que valida que ningun campo falte por llenar y redirige a la base de datos
     public Boolean tomaDatos(String usu, String pass, String confPass, String Pnombres, String Snombres, String Papellidos, String Sapellidos, String correo, String genero, DateTime fecha, String tel, String Doc, String TDoc, PictureBox img) {
       Boolean vald = false;
       if (usu == "" || pass == "" || confPass == "" || Pnombres == "" || Papellidos == "" || correo == "" || genero == "" || tel == "" || Doc == "" || TDoc == "") {
@@ -48,13 +56,14 @@ namespace Tolotu_Desktop.Control {
           // se valida si la conversion de numero de documento y la edad son validos
           if (convertInt(Doc) == true && IdentificarEdad(fecha) == true) {
             imagen(img, usu);
-            if(!modReg.doc(document)){
-               if (modReg.registro(usu, pass, Pnombres, Snombres, Papellidos, Sapellidos, correo, gen, fecha, edad, tel, document, TDocu, URL)) {
-                   vald = true;
-                    MessageBox.Show("Se ha registrado exitosamente!", "Tolotu - Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-               }
-            }else{
-               MessageBox.Show("El documento ingresado ya se encuetra registrado, si usted ya esta registrado por favor no cree una cuenta nueva", "Tolotu - Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            if (!modReg.doc(document)) {
+              if (modReg.registro(usu, pass, Pnombres, Snombres, Papellidos, Sapellidos, correo, gen, fecha, edad, tel, document, TDocu, URL)) {
+                vald = true;
+                MessageBox.Show("Se ha registrado exitosamente!", "Tolotu - Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+              }
+            }
+            else {
+              MessageBox.Show("El documento ingresado ya se encuetra registrado, si usted ya esta registrado por favor no cree una cuenta nueva", "Tolotu - Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
           }
         }
@@ -66,8 +75,8 @@ namespace Tolotu_Desktop.Control {
     }
 
     // Estado: Activo
-    // Creado por Juan Miguel Castro rojas - 4.12.2019
-    // guarda la imagen en los archivos locales de la aplicacion
+    // Creado por Juan Castro - 4.12.2019
+    // Guarda la imagen en los archivos locales de la aplicacion
     public void imagen(PictureBox img, String usu) {
       //direccion exacta de donde se uubica la imagen dentro de la carpeta del proyecto
       String FileName = Path.Combine(@"..\..\imagenes\");
@@ -77,17 +86,18 @@ namespace Tolotu_Desktop.Control {
 
 
     // Estado: Activo
-    // Creado por Juan Miguel Castro rojas - 26.11.2019
-    // metodo para identificar la edad a base de la fecha de nacimiento
+    // Creado por Juan Castro - 26.11.2019
+    // Metodo para identificar la edad a base de la fecha de nacimiento
     public Boolean IdentificarEdad(DateTime fecha) {
 
       this.edad = System.DateTime.Now.Year - fecha.Year;
 
       if (System.DateTime.Now.Subtract(fecha.AddYears(edad)).TotalDays < 0) {
-            return true;
-      } else {
-            MessageBox.Show("la fecha de nacimiento que ha introducido es invaldia", "Tolotu - Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            return false;
+        return true;
+      }
+      else {
+        MessageBox.Show("la fecha de nacimiento que ha introducido es invaldia", "Tolotu - Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        return false;
       }
     }
 
@@ -97,8 +107,8 @@ namespace Tolotu_Desktop.Control {
     }
 
     // Estado: Activo
-    // Creado por Juan Miguel Castro rojas - 23.11.2019
-    // metodo para validar genero y tipo de documento
+    // Creado por Juan Castro - 23.11.2019
+    // Metodo para validar genero y tipo de documento
     public void converGen(String genero, String TD) {
       switch (genero) {
         case "Hombre":
@@ -125,8 +135,8 @@ namespace Tolotu_Desktop.Control {
     }
 
     // Estado: Activo
-    // Creado por Juan Miguel Castro rojas - 23.11.2019
-    //metodo para validar y convertir el nuemro de documento a entero
+    // Creado por Juan Castro - 23.11.2019
+    // Metodo para validar y convertir el nuemro de documento a entero
     public Boolean convertInt(String Docum) {
       Boolean confirmar = Int32.TryParse(Docum, out document);
       return confirmar;

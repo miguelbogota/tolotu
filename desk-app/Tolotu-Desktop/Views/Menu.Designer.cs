@@ -1,4 +1,4 @@
-﻿namespace Tolotu_Desktop.Vista {
+﻿namespace Tolotu_Desktop.Views {
   partial class Menu {
     /// <summary>
     /// Required designer variable.

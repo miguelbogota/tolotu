@@ -224,12 +224,12 @@ END
 GO
 
 CREATE PROCEDURE [HayUsuario]
-@documento int,
+@usuario varchar(50),
 @result tinyint output
 AS    
 BEGIN
   DECLARE @output varchar(50)
-  SET @output = (SELECT [usuario] FROM [usuario] WHERE [documento]=@documento)
+  SET @output = (SELECT [documento] FROM [usuario] WHERE [usuario]=@usuario)
   IF @output > 0
   BEGIN
     SET @result = 1

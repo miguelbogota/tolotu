@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Tolotu_Desktop.Control {
+namespace Tolotu_Desktop.Controllers {
 
   // Estado: Activo
   // Creado por Juan Miguel Castro rojas - 20.11.2019

@@ -1,4 +1,4 @@
-﻿namespace Tolotu_Desktop.vista {
+﻿namespace Tolotu_Desktop.Views {
 
   partial class Registro {
 
@@ -82,7 +82,7 @@
             this.btnValidar.TabIndex = 0;
             this.btnValidar.Text = "validar";
             this.btnValidar.UseVisualStyleBackColor = true;
-            this.btnValidar.Click += new System.EventHandler(this.button1_Click);
+            this.btnValidar.Click += new System.EventHandler(this.btnValidar_CLick);
             // 
             // label1
             // 
@@ -289,7 +289,7 @@
             this.btnSiguiente.TabIndex = 17;
             this.btnSiguiente.Text = "Siguiente";
             this.btnSiguiente.UseVisualStyleBackColor = true;
-            this.btnSiguiente.Click += new System.EventHandler(this.button2_Click);
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
             // 
             // panel2
             // 
@@ -433,7 +433,6 @@
             this.label10.Size = new System.Drawing.Size(101, 13);
             this.label10.TabIndex = 0;
             this.label10.Text = "Tipo de Documento";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // btnCancelar
             // 

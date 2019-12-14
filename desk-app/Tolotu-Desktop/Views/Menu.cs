@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tolotu_Desktop.Models.Objetos;
 
-namespace Tolotu_Desktop.Vista {
+namespace Tolotu_Desktop.Views {
 
 
   public partial class Menu : Form {
@@ -76,7 +76,7 @@ namespace Tolotu_Desktop.Vista {
         labels.ElementAt(es).Name = "label" + this.i;
         labels.ElementAt(es).Size = new System.Drawing.Size(35, 13);
         labels.ElementAt(es).TabIndex = 0;
-        labels.ElementAt(es).Text = actividades.ElementAt(es).nombre;
+        labels.ElementAt(es).Text = actividades.ElementAt(es).Nombre;
 
         botones.ElementAt(es).Location = new System.Drawing.Point(124, 108);
         botones.ElementAt(es).Name = "button" + this.i;
@@ -107,13 +107,22 @@ namespace Tolotu_Desktop.Vista {
       this.i = this.i + 1;
     }
 
-        // Estado: Activo
-        // Creado por Juan Castro - 8.12.2019
-        // boton para cerrar sesion y volver a login
-        private void btnCerrarSesion_Click(object sender, EventArgs e){
-            Login log = new Login();
-            this.Hide();
-            log.Show();
-        }
+    // Estado: Activo
+    // Creado por Juan Castro - 8.12.2019
+    // boton para cerrar sesion y volver a login
+    private void btnCerrarSesion_Click(object sender, EventArgs e) {
+      Login log = new Login();
+      this.Hide();
+      log.Show();
     }
+
+    // Estado: Activo
+    // Creado por Miguel Bogota - 14.12.2019
+    // Finalizar Menu cuando se cierra la ventana
+    protected override void OnFormClosing(FormClosingEventArgs e) {
+      base.OnFormClosing(e);
+      Application.Exit();
+    }
+
+  }
 }
