@@ -1,0 +1,17 @@
+﻿@model Tolotu_Web.Models.Objetos.Usuario
+@{
+  ViewData["Title"] = "Inicio";
+  var ses = "asda";
+  if (ViewData["auth"] == null) {
+    ses = "no";
+  }
+  else if (ViewData["auth"] != null) {
+    ses = "yes";
+  }
+
+}
+
+<h1>@Html.DisplayFor(modelItem => Model.PrimerNombre)</h1>
+<h1>@Html.DisplayFor(modelItem => Model.PrimerApellido)</h1>
+
+<h2>@ses</h2>

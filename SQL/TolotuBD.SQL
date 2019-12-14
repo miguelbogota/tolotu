@@ -64,6 +64,7 @@ GO
 CREATE TABLE [evento] (
   [eventoId] int PRIMARY KEY IDENTITY(1, 1),
   [nombre_evento] varchar(30),
+  [descripcion_evento] varchar(255),
   [localicazion] nvarchar(255),
   [clasificacion] varchar(60),
   [imagen] varchar(60)

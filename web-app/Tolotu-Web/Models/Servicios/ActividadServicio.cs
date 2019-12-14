@@ -1,15 +1,15 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tolotu_Desktop.Models.Objetos;
+using Tolotu_Web.Models.Objetos;
 
-namespace Tolotu_Desktop.Models.Servicios {
+namespace Tolotu_Web.Models.Servicios {
 
   // Estado: Activo
-  // Creado por Miguel Bogota - 11.12.2019
+  // Creado por Miguel Bogota - 13.12.2019
   // Clase de funciones de la base de datos del objeto actividad.
   class ActividadServicio {
 
@@ -21,7 +21,7 @@ namespace Tolotu_Desktop.Models.Servicios {
     }
 
     // Estado: Activo
-    // Creado por Miguel Bogota - 11.12.2019
+    // Creado por Miguel Bogota - 13.12.2019
     // Funcion para traer la informacion en una lista de las actividades de un usuario
     public List<Actividad> getActividadesByusuario(Usuario usuario) {
       List<Actividad> actividades = new List<Actividad>(); // Instanciar lista de actividades
@@ -40,7 +40,7 @@ namespace Tolotu_Desktop.Models.Servicios {
     }
 
     // Estado: Activo
-    // Creado por Miguel Bogota - 11.12.2019
+    // Creado por Miguel Bogota - 13.12.2019
     // Funcion para traer la informacion en una lista de las actividades de la base de datos
     public List<Actividad> getActividades() {
       List<Actividad> actividades = new List<Actividad>(); // Instanciar lista de actividades

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tolotu_Desktop.Models.Objetos {
+namespace Tolotu_Web.Models.Objetos {
 
   // Estado: Activo
-  // Creado por Miguel Bogota - 06.12.2019
+  // Creado por Miguel Bogota - 13.12.2019
   // Clase es un objeto que representa una actividad.
   public class Actividad {
 

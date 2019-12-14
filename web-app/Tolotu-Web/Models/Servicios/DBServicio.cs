@@ -1,19 +1,19 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tolotu_Desktop.Models.Servicios {
+namespace Tolotu_Web.Models.Servicios {
 
   // Estado: Activo
   // Creado por Miguel Bogota - 06.12.2019
   // Clase de funciones de la base de datos.
   public class DBServicio {
 
-    private const string server = "(local)"; // Nombre del servidor
+    private const string server = "(local)\\SQLINSTANCE"; // Nombre del servidor
     private const string database = "TolotuBD"; // Nombre de la base de datos
 
     private string DBName { get; set; } // Nombre de conexión a base de datos

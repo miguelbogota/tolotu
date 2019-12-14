@@ -1,4 +1,4 @@
-﻿@model Tolotu_Web.Controllers.CuentaController
+﻿@model Tolotu_Web.Models.Objetos.Usuario
 @{
   ViewData["Titulo"] = "Iniciar Sesión";
 }
@@ -14,7 +14,7 @@
 
     <!-- Logo -->
     <div class="card">
-      <img src="~/img/Tolot_Logo.png" class="card-img-top h-50" alt="Logo">
+      <img src="~/img/Logo.svg" class="card-img-top h-50" alt="Logo">
       <div class="card-body pb-1 pl-5 pr-5 pt-0 text-center">
 
         <!-- Titulo -->
@@ -32,11 +32,11 @@
         </div>
 
         <!-- Form donde se van a pedir todos los datos del usuario y se van a guardar en el controlador en la propiedad usuario -->
-        <form method="post" asp-action="OnSubmitRegistro">
-          <input type="email" class="form-control mb-2 mt-3" placeholder="Correo electronico" asp-for="UsuarioRegistro.email">
-          <input type="text" class="form-control mb-2" placeholder="Nombre Completo" asp-for="UsuarioRegistro.nombre">
-          <input type="text" class="form-control mb-2" placeholder="Usuario" asp-for="UsuarioRegistro.usuario">
-          <input type="password" class="form-control mb-3" placeholder="Contraseña" asp-for="UsuarioRegistro.contrasena">
+        <form method="post" asp-action="Login">
+          <input type="email" class="form-control mb-2 mt-3" placeholder="Correo electronico" asp-for="Correo">
+          <input type="text" class="form-control mb-2" placeholder="Nombre Completo" asp-for="PrimerNombre">
+          <input type="text" class="form-control mb-2" placeholder="Usuario" asp-for="NombreUsuario">
+          <input type="password" class="form-control mb-3" placeholder="Contraseña" asp-for="Contrasenia">
 
           <button type="submit" class="btn btn-primary w-100">Registrarme!</button>
         </form>
