@@ -23,16 +23,16 @@ namespace Tolotu_Web.Models.Servicios {
     // Estado: Activo
     // Creado por Miguel Bogota - 13.12.2019
     // Funcion para traer la informacion en una lista de las actividades de un usuario
-    public List<Actividad> getActividadesByusuario(Usuario usuario) {
+    public List<Actividad> getActividadesByusuario(int documento) {
       List<Actividad> actividades = new List<Actividad>(); // Instanciar lista de actividades
       // Consulta a la base de datos para traer las actividades de un usuario
-      SqlDataReader reader = this.DB.Consulta("SELECT eve.* FROM [participantes] par JOIN [evento] eve ON par.[eventoID] = eve.[eventoId] WHERE [usuarioID] = " + usuario.Documento.ToString() + ";");
+      SqlDataReader reader = this.DB.Consulta("SELECT eve.* FROM [participantes] par JOIN [evento] eve ON par.[eventoID] = eve.[eventoId] WHERE [usuarioID] = " + documento.ToString() + ";");
       // If para validar si la consulta tiene filas
       if (reader.HasRows) {
         // While para agregar cada una de las actividades a la lista
         while (reader.Read()) {
           // Agregar a la lista
-          actividades.Add(new Actividad(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4)));
+          actividades.Add(new Actividad(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5)));
         }
       }
       reader.Close(); // Cerrar conexion a la base de datos
@@ -51,7 +51,7 @@ namespace Tolotu_Web.Models.Servicios {
         // While para agregar cada una de las actividades a la lista
         while (reader.Read()) {
           // Agregar a la lista
-          actividades.Add(new Actividad(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4)));
+          actividades.Add(new Actividad(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(6)));
         }
       }
       reader.Close(); // Cerrar conexion a la base de datos

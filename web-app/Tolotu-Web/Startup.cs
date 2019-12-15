@@ -25,7 +25,10 @@ namespace Tolotu_Web {
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services) {
       services.AddControllersWithViews();
-      services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+      services.AddAuthentication("Autenticacion").AddCookie("Autenticacion", config => {
+        config.Cookie.Name = "Autenticacion";
+        config.LoginPath = "/Auth";
+      });
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

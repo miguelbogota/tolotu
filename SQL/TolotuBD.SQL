@@ -67,7 +67,7 @@ CREATE TABLE [evento] (
   [descripcion_evento] varchar(255),
   [localicazion] nvarchar(255),
   [clasificacion] varchar(60),
-  [imagen] varchar(60)
+  [imagen] varchar(255)
 )
 GO
 
@@ -311,14 +311,23 @@ BEGIN
 END
 GO
 
+INSERT INTO [usuario] VALUES
+(12321356, 1, 'AdminTest', 'Karen', '', 'Alga', '', 'correotest@gmail.com', '3208976534', 2, '1996-12-12', 23, 1, 'test', 1, 'test.png');
+GO
+
+INSERT INTO [evento] VALUES
+('Monserrate', 'Esta es la descripcion del pase por Monserrate.', 'Bogotá', 'Sexy', 'https://www.grancolombiatours.com/wp-content/uploads/2019/05/2-bogota-monserrate-1.jpg');
+GO
+
+INSERT INTO [participantes] VALUES
+(1, 12321356)
+GO
+
+SELECT eve.* FROM [participantes] par JOIN [evento] eve ON par.[eventoID] = eve.[eventoId] WHERE [usuarioId] = 12321356;
+
 SELECT * FROM evento
 
-SELECT eve.* FROM [participantes] par JOIN [evento] eve ON par.[eventoID] = eve.[eventoId] WHERE usuarioID = 65165;
-
-INSERT INTO [evento] VALUES ('Ulitma', 'Bogota', 'Sexy', '../image');
-
-INSERT INTO [participantes] VALUES (3, 65165)
+SELECT * FROM [participantes]
 
 SELECT * FROM usuario
 
-ALTER TABLE [gustos] ALTER COLUMN [descripcion] varchar(225);

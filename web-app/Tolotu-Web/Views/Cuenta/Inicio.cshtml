@@ -1,17 +1,17 @@
-﻿@model Tolotu_Web.Models.Objetos.Usuario
+﻿@using Tolotu_Web.Models.Objetos
+@model Tolotu_Web.Models.Objetos.Usuario
 @{
   ViewData["Title"] = "Inicio";
-  var ses = "asda";
-  if (ViewData["auth"] == null) {
-    ses = "no";
-  }
-  else if (ViewData["auth"] != null) {
-    ses = "yes";
-  }
-
 }
 
-<h1>@Html.DisplayFor(modelItem => Model.PrimerNombre)</h1>
-<h1>@Html.DisplayFor(modelItem => Model.PrimerApellido)</h1>
-
-<h2>@ses</h2>
+@foreach (Actividad act in Model.Actividades) {
+  <div class="card" style="width: 18rem;">
+    <div class="card-header">@act.Localizacion</div>
+    <img src="@act.Imagen" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">@act.Nombre</h5>
+      <p class="card-text">@act.Descripcion</p>
+      <a href="" class="btn btn-primary">Ver Actividad!</a>
+    </div>
+  </div>
+}

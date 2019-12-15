@@ -1,26 +1,21 @@
-﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
-
-  <ul class="navbar-nav">
-    @if (SignInManager.IsSignedIn(User)) {
-      <!--
+﻿@model Tolotu_Web.Models.Objetos.Usuario
+<ul class="navbar-nav">
+  @if (Model != null) {
     <li class="nav-item">
-      <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hola @User.Identity.Name!</a>
+      <a class="nav-link text-dark" title="Manage">Hola @Html.DisplayFor(model => model.PrimerNombre)!</a>
     </li>
     <li class="nav-item">
-      <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+      <form class="form-inline" asp-area="" asp-controller="Cuenta" asp-action="Logout">
         <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
       </form>
     </li>
-    -->
-    }
-    else {
-      <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Cuenta" asp-action="Registro">Crear cuenta</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Cuenta" asp-action="Login">Iniciar sesisón</a>
-      </li>
-    }
-  </ul>
+  }
+  else {
+    <li class="nav-item">
+      <a class="nav-link text-dark" asp-area="" asp-controller="Cuenta" asp-action="Registro">Crear cuenta</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark" asp-area="" asp-controller="Cuenta" asp-action="Login">Iniciar sesisón</a>
+    </li>
+  }
+</ul>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tolotu_Web.Models.Servicios;
 
 namespace Tolotu_Web.Models.Objetos {
 
@@ -44,6 +45,7 @@ namespace Tolotu_Web.Models.Objetos {
     public string Rol { get; set; } // Rol del usuario
     [BindProperty]
     public string Imagen { get; set; } // Link de la imagen del usuario
+    public List<Actividad> Actividades { get; set; } // Lista de actividades del usuario
 
     // Constructor
     public Usuario(int documento, string tipoDocuemnto, string nombreUsuario, string primerNombre, string segundoNombre, string primerApellido, string segundoApellido, string correo, string telefono, string genero, DateTime nacimiento, int edad, string estado, string contrasenia, string rol, string imagen) {
@@ -63,6 +65,7 @@ namespace Tolotu_Web.Models.Objetos {
       Contrasenia = contrasenia;
       Rol = rol;
       Imagen = imagen;
+      Actividades = new ActividadServicio().getActividadesByusuario(Documento);
     }
 
     public Usuario() {
