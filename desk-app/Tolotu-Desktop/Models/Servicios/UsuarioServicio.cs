@@ -58,7 +58,18 @@ namespace Tolotu_Desktop.Models.Servicios {
       // Hacer validacion de la base de datos
       if (this.DB.ProcedimientoReturn("HayUsuario", "@usuario, " + usuario + ", varchar", "out, @result, tinyint, 5")[0].Equals("1")) {
         check = true; // Cambiar estado ya que se encontro
-        Console.WriteLine("Yes " + check);
+      }
+      return check;
+    }
+
+    // Estado: Activo
+    // Creado por Miguel Bogota - 15.12.2019
+    // Funcion valida si un usuario esta en la base de datos
+    public bool DocumentoExiste(string documento) {
+      bool check = false; // Variable para validar si existe record en la base de datos del documento del usuario
+      // Hacer validacion de la base de datos
+      if (this.DB.ProcedimientoReturn("HayDocumento", "@documento, " + documento + ", varchar", "out, @result, tinyint, 5")[0].Equals("1")) {
+        check = true; // Cambiar estado ya que se encontro
       }
       return check;
     }

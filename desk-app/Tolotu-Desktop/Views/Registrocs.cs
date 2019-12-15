@@ -14,28 +14,38 @@ namespace Tolotu_Desktop.Views {
 
   // Estado: Activo
   // Creado por Juan Castro - 22.11.2019
-  // vista para registro de usuarios nuevos
+  // Vista para registro de usuarios nuevos
   public partial class Registro : Form {
 
-    private RegistroController RegistroController = new RegistroController();
+    private RegistroController registroController = new RegistroController(); // Controlador del Registro
 
+    // Constructor
     public Registro() {
       InitializeComponent();
     }
 
-    private void btnValidar_CLick(object sender, EventArgs e) {
+    // Estado: Activo
+    // Creado por Juan Castro - 22.11.2019
+    // Funcion valida si hay algun usuario igual
+    private void Validar_CLick(object sender, EventArgs e) {
       // Validar si usuario existe para esconder el menu de validacion
-      bool val = RegistroController.ValidarUsuario(txtusuario, btnValidar, panelInfoBasica);
+      registroController.ValidarUsuario(txtusuario, btnValidar, panelInfoBasica);
     }
 
-    private void btnSiguiente_Click(object sender, EventArgs e) {
+    // Estado: Activo
+    // Creado por Juan Castro - 22.11.2019
+    // Funcion activa el siguiente panel para continuar con el registro
+    private void Siguiente_Click(object sender, EventArgs e) {
       // Activa el siguiente panel
       panel2.Enabled = true;
       panel2.Visible = true;
       panelInfoBasica.Visible = false;
     }
 
-    private void importImg_Click(object sender, EventArgs e) {
+    // Estado: Activo
+    // Creado por Juan Castro - 22.11.2019
+    // Funcion importa la imagen seleccionada
+    private void ImportImg_Click(object sender, EventArgs e) {
       try {
         this.openFileDialog1.ShowDialog();
         if (this.openFileDialog1.FileName.Equals("") == false) {
@@ -47,34 +57,60 @@ namespace Tolotu_Desktop.Views {
       }
     }
 
-    private void btnCancelar_Click(object sender, EventArgs e) {
+    // Estado: Activo
+    // Creado por Miguel Bogota - 15.12.2019
+    // Funcion cancela el registro y vuelve al login
+    private void Cancelar_Click(object sender, EventArgs e) {
       new FuncionesController().CambiarVentana(this, new Login());
     }
 
-    private void ventanaRegistro_Load(object sender, EventArgs e) {
+    // Estado: Activo
+    // Creado por Miguel Bogota - 15.12.2019
+    // Funcion carga la informacion de login al ser llamado
+    private void Registro_Load(object sender, EventArgs e) {
       panelInfoBasica.Enabled = false;
       panel2.Enabled = false;
       panel2.Visible = false;
       panelInfoBasica.Visible = true;
-      //carga la imagen de usuario predefinida
+      // Carga la imagen de usuario predefinida
       String FileName = Path.Combine(@"..\..\imagenes\default.PNG");
       imagen.Image = System.Drawing.Image.FromFile(FileName);
       imagen.SizeMode = PictureBoxSizeMode.StretchImage;
     }
 
-    private void button2_Click_1(object sender, EventArgs e) {
-      new FuncionesController().CambiarVentana(this, new Login());
-    }
-
-    private void button1_Click_1(object sender, EventArgs e) {
-      String date = dateTimePicker1.Value.ToString("dd/MM/yyyy");
-      if (RegistroController.tomaDatos(txtusuario.Text, txtPass.Text, txtConfPass.Text, txtPNombres.Text, txtSNombres.Text, txtPApellidos.Text, txtSApellidos.Text, txtCorreos.Text, combGen.SelectedItem.ToString(), dateTimePicker1.Value, txtTel.Text, txtNDoc.Text, combTD.SelectedItem.ToString(), imagen)) {
-        new FuncionesController().CambiarVentana(this, new Login());
+    // Estado: Cambiado
+    // Creado por Juan Castro - 22.11.2019
+    // Cambiado por Miguel Bogota - 15.12.2019
+    // Funcion para el evento del boton de submit y registrar datos
+    private void Login_Submit(object sender, EventArgs e) {
+      // Guardar validacion en variable
+      bool check = registroController.ValidacionCampos(
+        txtusuario.Text, // Usuario
+        txtPass.Text, // Contraseña
+        txtConfPass.Text, // Confirmacion de contraseña
+        txtPNombres.Text, // Primer Nombre
+        txtSNombres.Text, // Segundo nombre
+        txtPApellidos.Text, // Primer apellido
+        txtSApellidos.Text, // Segundo apellido
+        txtCorreos.Text, // Correo electronico
+        combGen.SelectedItem.ToString(), // Genero
+        dateTimePicker1.Value, // Fecha de nacimiento
+        txtTel.Text, // Telefono
+        txtNDoc.Text, // Numero de documento
+        combTD.SelectedItem.ToString(), // Tipo de documento
+        imagen // URL imagen del perfil
+      );
+      // Validar si los campos estan completos
+      if (check) {
+        new FuncionesController().CambiarVentana(this, new Login()); // Cambiar al login
       }
 
     }
 
-    private void btnAtras_Click(object sender, EventArgs e) {
+    // Estado: Activo
+    // Creado por Juan Castro - 22.11.2019
+    // Funcion delvuelve atras en el proceso de registro
+    private void Atras_Click(object sender, EventArgs e) {
       panel2.Visible = false;
       panelInfoBasica.Visible = true;
     }
@@ -84,7 +120,7 @@ namespace Tolotu_Desktop.Views {
     // Finalizar Registro cuando se cierra la ventana
     protected override void OnFormClosing(FormClosingEventArgs e) {
       base.OnFormClosing(e);
-      Application.Exit();
+      new FuncionesController().Finalizar();
     }
 
   }

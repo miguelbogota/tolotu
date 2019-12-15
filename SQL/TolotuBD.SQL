@@ -241,6 +241,23 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE [HayDocumento]
+@documento varchar(50),
+@result tinyint output
+AS    
+BEGIN
+  DECLARE @output varchar(50)
+  SET @output = (SELECT [documento] FROM [usuario] WHERE [documento]=@documento)
+  IF @output > 0
+  BEGIN
+    SET @result = 1
+  END
+  ELSE
+  BEGIN
+    SET @result = 0
+  END
+END
+
 CREATE PROCEDURE [AgregarUsuario]
 @Numero_Documento int,
 @tipo_documento tinyint,

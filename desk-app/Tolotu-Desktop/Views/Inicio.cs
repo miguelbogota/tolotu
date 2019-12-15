@@ -12,7 +12,7 @@ using Tolotu_Desktop.Models.Objetos;
 namespace Tolotu_Desktop.Views {
 
 
-  public partial class Menu : Form {
+  public partial class Inicio : Form {
 
     public int margin;
     public int size;
@@ -20,7 +20,7 @@ namespace Tolotu_Desktop.Views {
     public int i;
 
     // Constructor
-    public Menu() {
+    public Inicio() {
       InitializeComponent();
 
       this.margin = 30;

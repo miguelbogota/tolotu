@@ -20,6 +20,11 @@ namespace Tolotu_Desktop.Controllers {
       next.Show();
     }
 
+    // Funcion para finalizar programa
+    public void Finalizar() {
+      Application.Exit();
+    }
+
   }
 
 }

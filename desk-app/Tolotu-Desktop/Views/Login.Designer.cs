@@ -98,7 +98,6 @@
       this.txtUsuario.Size = new System.Drawing.Size(273, 19);
       this.txtUsuario.TabIndex = 6;
       this.txtUsuario.Text = "Ingresa tu usuario";
-      this.txtUsuario.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtUsuario_MouseClick);
       this.txtUsuario.Enter += new System.EventHandler(this.txtUsuario_Enter);
       this.txtUsuario.Leave += new System.EventHandler(this.txtUsuario_Leave);
       // 
@@ -114,7 +113,6 @@
       this.txtContraseña.Size = new System.Drawing.Size(273, 19);
       this.txtContraseña.TabIndex = 7;
       this.txtContraseña.Text = "Ingresa tu contraseña";
-      this.txtContraseña.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtContraseña_MouseClick);
       this.txtContraseña.Enter += new System.EventHandler(this.txtContraseña_Enter);
       this.txtContraseña.Leave += new System.EventHandler(this.txtContraseña_Leave);
       // 
