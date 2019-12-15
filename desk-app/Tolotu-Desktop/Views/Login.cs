@@ -17,10 +17,11 @@ namespace Tolotu_Desktop.Views {
   // Crea la vista del login
   public partial class Login : Form {
 
-    private LoginController loginController = new LoginController(); // Controlador del Login
+    private LoginController loginController { get; set; } // Controlador del Login
 
     // Constructor
     public Login() {
+      loginController = new LoginController();
       InitializeComponent();
     }
 
@@ -32,7 +33,7 @@ namespace Tolotu_Desktop.Views {
       Usuario user = loginController.LoginDatos(txtUsuario.Text, txtContraseña.Text);
       if (user != null) {
         MessageBox.Show("Bienvenido", "Tolotu", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        new FuncionesController().CambiarVentana(this, new Inicio());
+        new FuncionesController().CambiarVentana(this, new Inicio(user));
       }
     }
 

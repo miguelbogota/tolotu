@@ -257,6 +257,7 @@ BEGIN
     SET @result = 0
   END
 END
+GO
 
 CREATE PROCEDURE [AgregarUsuario]
 @Numero_Documento int,
@@ -329,15 +330,23 @@ END
 GO
 
 INSERT INTO [usuario] VALUES
-(12321356, 1, 'AdminTest', 'Karen', '', 'Alga', '', 'correotest@gmail.com', '3208976534', 2, '1996-12-12', 23, 1, 'test', 1, 'test.png');
+(12321356, 1, 'Admin', 'Karen', '', 'Alga', '', 'correotest@gmail.com', '3208976534', 2, '1996-12-12', 23, 1, 'test', 1, 'test.png'),
+(947398, 2, 'Migue', 'Miguel', 'Angel', 'Bogota', 'Rico', 'miguel@gmail.com', '3185430987', 1, '1996-11-09', 23, 1, '1234', 1, 'test.png'),
+(907234958, 2, 'Juancho', 'Juan', 'Miguel', 'Castro', 'Rojas', 'juan@gmail.com', '3173098274', 2, '1997-03-20', 27, 1, 'zxcv', 1, 'test.png');
 GO
 
 INSERT INTO [evento] VALUES
-('Monserrate', 'Esta es la descripcion del pase por Monserrate.', 'Bogotá', 'Sexy', 'https://www.grancolombiatours.com/wp-content/uploads/2019/05/2-bogota-monserrate-1.jpg');
+('Monserrate', 'Paseo por monserrate con todo detalle y luces navideñas.', 'Bogotá', 'Sexy', 'https://www.grancolombiatours.com/wp-content/uploads/2019/05/2-bogota-monserrate-1.jpg'),
+('Zipaquira', 'Recorrer las minas de sal de Zipaquira.', 'Bogotá', 'Sexy', 'https://www.lavanguardia.com/r/GODO/LV/p5/WebSite/2019/01/04/Recortada/img_lbernaus_20190104-153650_imagenes_lv_terceros_istock-515233978-kEvH--992x558@LaVanguardia-Web.jpg'),
+('Bosa', 'Peleas callejeras en bosa... Donde la pipol goza. xD', 'Bogotá', 'Sexy', 'https://quechimbabogota.files.wordpress.com/2015/01/en-el-lugar-de-trabajo.jpg');
 GO
 
 INSERT INTO [participantes] VALUES
-(1, 12321356)
+(1, 12321356),
+(2, 12321356),
+(3, 12321356),
+(1, 947398),
+(3, 907234958);
 GO
 
 SELECT eve.* FROM [participantes] par JOIN [evento] eve ON par.[eventoID] = eve.[eventoId] WHERE [usuarioId] = 12321356;

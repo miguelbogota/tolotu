@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tolotu_Desktop.Models.Servicios;
 
 namespace Tolotu_Desktop.Models.Objetos {
 
@@ -27,6 +28,7 @@ namespace Tolotu_Desktop.Models.Objetos {
     public string Contrasenia { get; set; } // Contraseña del usuario
     public string Rol { get; set; } // Rol del usuario
     public string Imagen { get; set; } // Link de la imagen del usuario
+    public List<Actividad> Actividades { get; set; } // Lista de actividades del usuario
 
     // Constructor
     public Usuario(int documento, string tipoDocuemnto, string nombreUsuario, string primerNombre, string segundoNombre, string primerApellido, string segundoApellido, string correo, string telefono, string genero, DateTime nacimiento, int edad, string estado, string contrasenia, string rol, string imagen) {
@@ -46,6 +48,7 @@ namespace Tolotu_Desktop.Models.Objetos {
       Contrasenia = contrasenia;
       Rol = rol;
       Imagen = imagen;
+      Actividades = new ActividadServicio().getActividadesByusuario(Documento);
     }
 
   }

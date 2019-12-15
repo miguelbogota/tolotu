@@ -17,10 +17,11 @@ namespace Tolotu_Desktop.Views {
   // Vista para registro de usuarios nuevos
   public partial class Registro : Form {
 
-    private RegistroController registroController = new RegistroController(); // Controlador del Registro
+    private RegistroController registroController { get; set; } // Controlador del Registro
 
     // Constructor
     public Registro() {
+      registroController = new RegistroController();
       InitializeComponent();
     }
 
