@@ -13,8 +13,8 @@ namespace Tolotu_Desktop.Models.Servicios {
   // Clase de funciones de la base de datos.
   public class DBServicio {
 
-    private const string server = "(local)\\SQLINSTANCE"; // Nombre del servidor
-    private const string database = "TolotuBD"; // Nombre de la base de datos
+    private const string server = "(local)"; // Nombre del servidor
+    private const string database = "tolotuBD"; // Nombre de la base de datos
 
     private string DBName { get; set; } // Nombre de conexión a base de datos
     private SqlConnection conn { get; set; } // Conexión a la base de datos
@@ -81,12 +81,30 @@ namespace Tolotu_Desktop.Models.Servicios {
       }
       return Reader; // Devolver el resultado
     }
+        // Estado: Activo
+        // Creado por Juan Castro - 19.12.2019
+        // Función crea consultar de lectura a la base de datos y devolver un valor numerico
+        public int ConsultaScalar(string Query){
+            int i=0;
+            try{
+                this.Abrir(); // Abrir base de datos
+                SqlCommand comando = new SqlCommand(Query, conn); // Crear comando con query
+                comando.CommandType = CommandType.Text; // Texto
+                 i = Convert.ToInt32(comando.ExecuteScalar()); // Ejecutar el comando y guardarlo
+            }
+            catch (Exception ex){
+                Console.WriteLine("Error de conexión: " + ex); // Mostrar mensaje
+                Reader = null;
+            }
+            this.Cerrar();
+            return i; // Devolver el resultado
+        }
 
-    // Estado: Activo
-    // Creado por Miguel Bogota - 06.12.2019
-    // Función crea consultar con procedimiento almacenado y devuelve el valor
-    // Para agregar parametros se tiene que usar sintaxis: "@Nombre_Parametro_SQL, Valor_Parametro, Tipo de parametro", si es un output "out, @Nombre_Parametro_SQL, Tipo de parametro, largo del tipo".
-    public string[] ProcedimientoReturn(string Query, params string[] parametros) {
+        // Estado: Activo
+        // Creado por Miguel Bogota - 06.12.2019
+        // Función crea consultar con procedimiento almacenado y devuelve el valor
+        // Para agregar parametros se tiene que usar sintaxis: "@Nombre_Parametro_SQL, Valor_Parametro, Tipo de parametro", si es un output "out, @Nombre_Parametro_SQL, Tipo de parametro, largo del tipo".
+        public string[] ProcedimientoReturn(string Query, params string[] parametros) {
       string[] outputs; // Guardar outputs
       try {
         this.Abrir(); // Abrir base de datos

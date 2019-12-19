@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -32,7 +33,7 @@ namespace Tolotu_Desktop.Models.Servicios {
         // While para agregar cada una de las actividades a la lista
         while (reader.Read()) {
           // Agregar a la lista
-          actividades.Add(new Actividad(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5)));
+          actividades.Add(new Actividad(reader.GetInt32(0),reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5)));
         }
       }
       reader.Close(); // Cerrar conexion a la base de datos
@@ -51,13 +52,19 @@ namespace Tolotu_Desktop.Models.Servicios {
         // While para agregar cada una de las actividades a la lista
         while (reader.Read()) {
           // Agregar a la lista
-          actividades.Add(new Actividad(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5)));
+          actividades.Add(new Actividad(reader.GetInt32(0),reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5)));
         }
       }
       reader.Close(); // Cerrar conexion a la base de datos
       return actividades;
     }
+        DBServicio serv = new DBServicio();
+        public int participantes(int id){
+            int reader = this.DB.ConsultaScalar("select count(eventoID) from participantes where eventoID=" + id + "");
+            Console.WriteLine(reader);
+            return reader;
+        }
 
-  }
+    }
 
 }

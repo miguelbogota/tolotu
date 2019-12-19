@@ -56,6 +56,12 @@
     <Compile Include="Models\Servicios\DBServicio.cs" />
     <Compile Include="Models\Servicios\UsuarioServicio.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="Views\EventoDetallado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EventoDetallado.Designer.cs">
+      <DependentUpon>EventoDetallado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,9 @@
     <Compile Include="Views\Registrocs.Designer.cs">
       <DependentUpon>Registrocs.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\EventoDetallado.resx">
+      <DependentUpon>EventoDetallado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>

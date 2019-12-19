@@ -17,18 +17,21 @@ namespace Tolotu_Desktop.Models.Objetos {
     public string Clasificacion { get; set; } // Clasificacion de la actividad
     public string Imagen { get; set; } // URL imagen de la actividad
 
+    //modicicancion se agregan propiedades para mostar id del evento :  juan castro 18 - 12 - 19
+    public int Id{ get; set; }
     // Constructor
-    public Actividad(string nombre, string descripcion, string localizacion, string clasificacion, string imagen) {
+    public Actividad(int id, string nombre, string descripcion, string localizacion, string clasificacion, string imagen) {
+      Id = id;
       Nombre = nombre;
       Descripcion = descripcion;
       Localizacion = localizacion;
       Clasificacion = clasificacion;
       Imagen = imagen;
     }
-
     public Actividad(string nombre) {
       Nombre = nombre;
     }
+   
 
   }
 }

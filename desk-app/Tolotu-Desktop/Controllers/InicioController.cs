@@ -16,7 +16,8 @@ namespace Tolotu_Desktop.Controllers {
     public int margin = 30;
     public int size = 200;
     public int distance = 40;
-
+        public String TempNom ,TempDesC;
+        
     public Usuario UsuarioActual { get; set; } // Usuario actualmente loggeado
 
     // Constructor
@@ -77,6 +78,9 @@ namespace Tolotu_Desktop.Controllers {
         nombres.ElementAt(i).Size = new System.Drawing.Size(35, 13);
         nombres.ElementAt(i).TabIndex = 0;
         nombres.ElementAt(i).Text = actividad.Nombre;
+
+    
+        
         // Modificar el label de la descripcion
         descripciones.ElementAt(i).AutoSize = true;
         descripciones.ElementAt(i).Location = new System.Drawing.Point(28, 60);
@@ -84,13 +88,21 @@ namespace Tolotu_Desktop.Controllers {
         descripciones.ElementAt(i).Size = new System.Drawing.Size(35, 13);
         descripciones.ElementAt(i).TabIndex = 0;
         descripciones.ElementAt(i).Text = actividad.Descripcion;
+          
+       
+
         // Modificar el boton con el link
         botones.ElementAt(i).Location = new System.Drawing.Point(124, 108);
-        botones.ElementAt(i).Name = "Btn" + actividad.Nombre;
+        botones.ElementAt(i).Name = "Btn" + actividad.Nombre + i;
         botones.ElementAt(i).Size = new System.Drawing.Size(75, 23);
         botones.ElementAt(i).TabIndex = 1;
         botones.ElementAt(i).Text = "Ver este evento";
         botones.ElementAt(i).UseVisualStyleBackColor = true;
+
+        //hace referencia al evento :  juan castro 18-12-19
+        botones.ElementAt(i).Click+= new EventHandler(Btn_Click);
+               
+                
         // Modificar panel
         paneles.ElementAt(i).BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
         paneles.ElementAt(i).Controls.Add(botones.ElementAt(i));
@@ -114,6 +126,28 @@ namespace Tolotu_Desktop.Controllers {
       container.AutoScroll = true;
     }
 
-  }
+        // Estado: Activo
+        // Creado por Miguel Bogota - 18.12.2019
+        // Funcion carga y muestra las actividades en la pantalla de inicio
+        public void Btn_Click(object sender, EventArgs e) {
+            //se 
+            Button tempBtn = sender as Button;
+            //se toma el ultimo caracter de la cadena, correspondiente al indice del array list
+            String ctn = tempBtn.Name.Substring(tempBtn.Name.Length - 1);
+            int i = Int16.Parse(ctn); 
+            //se instancia el objeto
+            Actividad actividad = UsuarioActual.Actividades.ElementAt(i);
+            TempDesC = actividad.Descripcion;
+            TempNom = actividad.Nombre;
+            
+           Models.Servicios.ActividadServicio act = new Models.Servicios.ActividadServicio();
+           int part= act.participantes(actividad.Id);
+            //se instancia la nueva ventana
+            Views.EventoDetallado eve = new Views.EventoDetallado(TempNom, TempDesC,part);
+            //se visualiza sin minizar la actual ventana
+            eve.Show();
+        }
+
+    }
 
 }
