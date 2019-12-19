@@ -19,16 +19,21 @@ namespace Tolotu_Desktop.Controllers {
         public String TempNom ,TempDesC;
         
     public Usuario UsuarioActual { get; set; } // Usuario actualmente loggeado
-
-    // Constructor
+    public static Boolean activ = true;
+    
+        // Constructor
     public InicioController(Usuario usuarioActual) {
       UsuarioActual = usuarioActual;
     }
+        //cambia verdadero o falso segun si se requiere ver todas las actividades o solo las agregadas por el ususario
+    public void estadoList(Boolean a) {
+       activ = a;
+    }
 
-    // Estado: Activo
-    // Creado por Miguel Bogota - 15.12.2019
-    // Funcion esconde y muestra el panel de la derecha
-    public void TooglePanel(Panel panel, Button button, Panel container) {
+        // Estado: Activo
+        // Creado por Miguel Bogota - 15.12.2019
+        // Funcion esconde y muestra el panel de la derecha
+        public void TooglePanel(Panel panel, Button button, Panel container) {
       // Si el panel esta a la vista ocultarlo
       if (panel.Visible) {
         panel.Visible = false; // Ocultar panel
@@ -49,6 +54,16 @@ namespace Tolotu_Desktop.Controllers {
       }
     }
 
+        // Estado: Activo
+        // Creado por Juan Castro - 19.12.2019
+        // deja los objetos con propiedades predeterminaadas
+        public void LimpiarControles(){
+            //se vuelven a los valores predeterminados
+            margin = 30;
+            size = 200;
+            distance = 40;
+        }
+
     // Estado: Activo
     // Creado por Miguel Bogota - 15.12.2019
     // Funcion carga y muestra las actividades en la pantalla de inicio
@@ -58,8 +73,20 @@ namespace Tolotu_Desktop.Controllers {
       List<Button> botones = new List<Button>();
       List<Label> nombres = new List<Label>();
       List<Label> descripciones = new List<Label>();
+      
+      //Modificacion
+      //Limpia los controles : Juan Castro - 19.12.2019
+      container.Controls.Clear();
+      paneles.Clear();
+      botones.Clear();
+      nombres.Clear();
+      descripciones.Clear();
+      LimpiarControles();
+
       // Suspender para actualizar
       container.SuspendLayout();
+      //llama metodo para mostrar todas las actividades o a las que se ha registrado : Juan Castro / 19-12-19
+      UsuarioActual.arr(activ);
       // For para pasar por todas las actividades del usuario
       for (int i = 0; i < UsuarioActual.Actividades.Count; i++) {
         // Guardar actividad actual en el for
@@ -143,10 +170,12 @@ namespace Tolotu_Desktop.Controllers {
            Models.Servicios.ActividadServicio act = new Models.Servicios.ActividadServicio();
            int part= act.participantes(actividad.Id);
             //se instancia la nueva ventana
-            Views.EventoDetallado eve = new Views.EventoDetallado(TempNom, TempDesC,part);
+            Views.EventoDetallado eve = new Views.EventoDetallado(i,TempNom, TempDesC,part,activ);
             //se visualiza sin minizar la actual ventana
             eve.Show();
         }
+
+
 
     }
 

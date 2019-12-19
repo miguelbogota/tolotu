@@ -29,6 +29,7 @@ namespace Tolotu_Desktop.Models.Objetos {
     public string Rol { get; set; } // Rol del usuario
     public string Imagen { get; set; } // Link de la imagen del usuario
     public List<Actividad> Actividades { get; set; } // Lista de actividades del usuario
+  
 
     // Constructor
     public Usuario(int documento, string tipoDocuemnto, string nombreUsuario, string primerNombre, string segundoNombre, string primerApellido, string segundoApellido, string correo, string telefono, string genero, DateTime nacimiento, int edad, string estado, string contrasenia, string rol, string imagen) {
@@ -50,6 +51,19 @@ namespace Tolotu_Desktop.Models.Objetos {
       Imagen = imagen;
       Actividades = new ActividadServicio().getActividadesByusuario(Documento);
     }
+
+        public void arr(Boolean a)
+        {
+            Actividades.Clear();
+            if (a){
+                Actividades = new ActividadServicio().getActividadesByusuario(Documento);
+                
+            }
+            else {
+
+                Actividades = new ActividadServicio().getActividades();
+            }
+        }
 
   }
 

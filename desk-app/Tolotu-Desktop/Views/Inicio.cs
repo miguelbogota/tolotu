@@ -65,5 +65,16 @@ namespace Tolotu_Desktop.Views {
       new FuncionesController().Finalizar();
     }
 
-  }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            inicioController.estadoList(true);
+            inicioController.LoadActividades(container);
+        }
+
+        private void BtnAllActiv_Click(object sender, EventArgs e)
+        {
+            inicioController.estadoList(false);
+            inicioController.LoadActividades(container);
+        }
+    }
 }

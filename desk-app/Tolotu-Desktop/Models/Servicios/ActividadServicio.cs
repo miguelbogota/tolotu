@@ -61,7 +61,6 @@ namespace Tolotu_Desktop.Models.Servicios {
         DBServicio serv = new DBServicio();
         public int participantes(int id){
             int reader = this.DB.ConsultaScalar("select count(eventoID) from participantes where eventoID=" + id + "");
-            Console.WriteLine(reader);
             return reader;
         }
 

@@ -16,7 +16,9 @@ using System.Windows.Forms;
 
 namespace Tolotu_Desktop.Views{
     public partial class EventoDetallado : Form{
-        public EventoDetallado(String nombre,String descr, int participantes){
+
+        //constructor
+        public EventoDetallado(int id,String nombre,String descr, int participantes, Boolean a){
             InitializeComponent();
             //al cargar el form se visualiza la imagen del evento por default
             String FileName = Path.Combine(@"..\..\imagenes\Events\EventDefault.PNG");
@@ -30,7 +32,12 @@ namespace Tolotu_Desktop.Views{
            //mantiene los labels centrados
             LblEventNombre.Left = (this.ClientSize.Width - LblEventNombre.Size.Width) / 2;
             LblDescripcion.Left = (this.ClientSize.Width - LblDescripcion.Size.Width) / 2;
-          
+            if (a){
+                BtnParticipar.Visible = false;
+            }
+            else{
+                BtnParticipar.Visible = true;
+            }
 
         }
 
@@ -47,6 +54,11 @@ namespace Tolotu_Desktop.Views{
         }
 
         private void EventImagen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnParticipar_Click(object sender, EventArgs e)
         {
 
         }
