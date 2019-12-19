@@ -60,7 +60,7 @@ namespace Tolotu_Desktop.Models.Objetos {
                 Actividades = new ActividadServicio().getActividadesByusuario(Documento);
                 
             }else {
-                Actividades = new ActividadServicio().getActividades(Documento);
+                Actividades = new ActividadServicio().getActividades();
             }
         }
 

@@ -5,13 +5,15 @@
 }
 
 @foreach (Actividad act in Model.Actividades) {
-  <div class="card" style="width: 18rem;">
-    <div class="card-header">@act.Localizacion</div>
-    <img src="@act.Imagen" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">@act.Nombre</h5>
-      <p class="card-text">@act.Descripcion</p>
-      <a href="" class="btn btn-primary">Ver Actividad!</a>
+  <div class="col">
+    <div class="card mb-3" style="width: 18rem;">
+      <div class="card-header">@act.Localizacion</div>
+      <img src="@act.Imagen" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">@act.Nombre</h5>
+        <p class="card-text">@act.Descripcion</p>
+        <a href="" class="btn btn-primary">Ver Actividad!</a>
+      </div>
     </div>
   </div>
 }
