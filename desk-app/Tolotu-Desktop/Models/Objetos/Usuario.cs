@@ -51,17 +51,16 @@ namespace Tolotu_Desktop.Models.Objetos {
       Imagen = imagen;
       Actividades = new ActividadServicio().getActividadesByusuario(Documento);
     }
-
+        // Estado: Activo
+        // Creado por Juan Castro - 08.12.2019
         public void arr(Boolean a)
         {
             Actividades.Clear();
             if (a){
                 Actividades = new ActividadServicio().getActividadesByusuario(Documento);
                 
-            }
-            else {
-
-                Actividades = new ActividadServicio().getActividades();
+            }else {
+                Actividades = new ActividadServicio().getActividades(Documento);
             }
         }
 

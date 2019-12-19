@@ -170,5 +170,28 @@ namespace Tolotu_Desktop.Models.Servicios {
       }
     }
 
-  }
+        // Estado: Activo
+        // Creado por Juan Castro - 19.12.2019
+        // 
+        public Boolean regAct(int evento,int IdUsu) {
+            try{
+                String query = "insert into participantes VALUES (" + evento + ","+IdUsu+");";
+                
+                this.Abrir();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = this.conn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = query;
+                cmd.ExecuteNonQuery();
+                this.Cerrar();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            
+        }
+
+    }
 }

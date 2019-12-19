@@ -43,12 +43,12 @@ namespace Tolotu_Desktop.Models.Servicios {
     // Estado: Activo
     // Creado por Miguel Bogota - 11.12.2019
     // Funcion para traer la informacion en una lista de las actividades de la base de datos
-    public List<Actividad> getActividades() {
+    public List<Actividad> getActividades(int id) {
       List<Actividad> actividades = new List<Actividad>(); // Instanciar lista de actividades
       // Consulta a la base de datos para traer todas las actividades
-      SqlDataReader reader = this.DB.Consulta("SELECT * FROM evento");
-      // If para validar si la consulta tiene filas
-      if (reader.HasRows) {
+      SqlDataReader reader = this.DB.Consulta("select  * from evento;"); //inner join participantes on evento.eventoId = participantes.eventoID where participantes.usuarioID <> "+id+";");
+                                                                         // If para validar si la consulta tiene filas
+            if (reader.HasRows) {
         // While para agregar cada una de las actividades a la lista
         while (reader.Read()) {
           // Agregar a la lista
@@ -59,11 +59,13 @@ namespace Tolotu_Desktop.Models.Servicios {
       return actividades;
     }
         DBServicio serv = new DBServicio();
+
+        // Estado: Activo
+        // Creado por Juan Castro - 19.12.2019
+        // recibe el resultado de la busqueda de la cantidad de participantes
         public int participantes(int id){
             int reader = this.DB.ConsultaScalar("select count(eventoID) from participantes where eventoID=" + id + "");
             return reader;
         }
-
     }
-
 }

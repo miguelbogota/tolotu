@@ -16,9 +16,10 @@ using System.Windows.Forms;
 
 namespace Tolotu_Desktop.Views{
     public partial class EventoDetallado : Form{
-
+        Controllers.addEventController addE = new Controllers.addEventController();
+        public int usu, actv;
         //constructor
-        public EventoDetallado(int id,String nombre,String descr, int participantes, Boolean a){
+        public EventoDetallado(int idUsu,int idActiv,String nombre,String descr, int participantes, Boolean a){
             InitializeComponent();
             //al cargar el form se visualiza la imagen del evento por default
             String FileName = Path.Combine(@"..\..\imagenes\Events\EventDefault.PNG");
@@ -38,6 +39,8 @@ namespace Tolotu_Desktop.Views{
             else{
                 BtnParticipar.Visible = true;
             }
+            usu = idUsu;
+            actv = idActiv;
 
         }
 
@@ -60,6 +63,7 @@ namespace Tolotu_Desktop.Views{
 
         private void BtnParticipar_Click(object sender, EventArgs e)
         {
+            addE.addEvent(usu,actv);
 
         }
     }

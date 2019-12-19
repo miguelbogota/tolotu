@@ -154,8 +154,8 @@ namespace Tolotu_Desktop.Controllers {
     }
 
         // Estado: Activo
-        // Creado por Miguel Bogota - 18.12.2019
-        // Funcion carga y muestra las actividades en la pantalla de inicio
+        // Creado por Juan Castro - 19.12.2019
+        // abre la vista de detalle deactividades y envia toda la informacion del evento seleccionado
         public void Btn_Click(object sender, EventArgs e) {
             //se 
             Button tempBtn = sender as Button;
@@ -170,11 +170,12 @@ namespace Tolotu_Desktop.Controllers {
            Models.Servicios.ActividadServicio act = new Models.Servicios.ActividadServicio();
            int part= act.participantes(actividad.Id);
             //se instancia la nueva ventana
-            Views.EventoDetallado eve = new Views.EventoDetallado(i,TempNom, TempDesC,part,activ);
+            Views.EventoDetallado eve = new Views.EventoDetallado(UsuarioActual.Documento,actividad.Id, TempNom, TempDesC,part,activ);
             //se visualiza sin minizar la actual ventana
             eve.Show();
         }
 
+       
 
 
     }
